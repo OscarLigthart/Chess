@@ -26,6 +26,7 @@ RUN apt-get update && \
     git \
     ca-certificates \
     cmake \
+    libsfml-dev \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
