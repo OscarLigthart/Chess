@@ -31,30 +31,3 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-###############################
-# GLFW
-###############################
-# used for rendering the game
-
-# glfw dependencies
-RUN apt-get update && \
-    apt-get install --no-install-recommends --no-install-suggests --yes \
-    xorg-dev \
-    && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# clone the repo
-RUN git clone https://github.com/glfw/glfw.git
-WORKDIR /glfw
-RUN git checkout 3.3.4
-
-# build from source
-RUN mkdir build
-RUN cmake -S . -B build
-WORKDIR /glfw/build
-RUN make
-
-# clean up
-WORKDIR /
-RUN rm -r /glfw
