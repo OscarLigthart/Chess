@@ -1,6 +1,11 @@
-cmake_minimum_required( VERSION 3.1 )
+cmake_minimum_required(VERSION 3.1)
 
-project( chess )
+project(chess)
+
+include_directories(${PROJECT_SOURCE_DIR}/src)
+
+add_subdirectory(deps/glfw)
+
 
 find_package(OpenGL REQUIRED)
 
@@ -10,10 +15,9 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-add_subdirectory(deps/glfw)
+add_executable( chess src/main.cpp )
 
 target_link_libraries(chess glfw)
 
 target_link_libraries(chess OpenGL::GL)
-
 
