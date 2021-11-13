@@ -98,7 +98,6 @@ int main() {
                         // find out which piece it is as well
                         n = board[y][x];
                         p = pieces_board[y][x];
-                        std::cout << p << std::endl;
 
                         if (n) 
                         {
@@ -108,9 +107,11 @@ int main() {
                     // put down the piece
                     }
                     else {
-                        
+                        // update the boards
                         pieces_board[y][x] = p;
                         board[y][x] = n;
+
+                        // move the piece to the center of the square
                         f[p-1].setPosition(piece_size*x, piece_size*y);
                         moving = !moving;
                     }
