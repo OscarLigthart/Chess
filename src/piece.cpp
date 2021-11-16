@@ -8,7 +8,6 @@ class Piece {               // The class
   public:                   // Access specifier
     int position[2];        // position in x and y coordinates
     int size = 56;          // required for cutting out the pieces 
-    int myInt = 0;
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece
 
