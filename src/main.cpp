@@ -2,10 +2,20 @@
 // #include <GLFW/glfw3.h>
 #include <SFML/Graphics.hpp>
 #include <time.h>
+#include <pieces/pawn.cpp>
+#include <vector>
+
 
 int size = 56; // required for cutting out the pieces 
 int piece_size = 100; // 800/8
 sf::Sprite f[32];
+
+std::vector <Piece*> pieces;
+// Pawn* pieces[32];
+
+
+
+
 int board[8][8] = {
     { -1,-2,-3,-4,-5,-3,-2,-1 },
     { -6,-6,-6,-6,-6,-6,-6,-6 },
@@ -36,11 +46,13 @@ void loadPosition()
         {
             int n = board[i][j];
             if (!n) continue;
-            int x = abs(n) - 1;
-            int y = n>0?1:0;
-            f[k].setTextureRect( sf::IntRect(size*x, size*y, size, size));
-            f[k].setPosition(piece_size*j, piece_size*i);
-            k++;
+
+            // pieces[k] = new Pawn(0);
+            // pieces[k]->sprite.setPosition(piece_size*j, piece_size*i);
+            Pawn* pawn = new Pawn(0);
+            pawn->setSpritePosition(piece_size*j, piece_size*i);
+
+            pieces.push_back(pawn);
         }
 }
 
@@ -68,9 +80,12 @@ int main() {
     int n=0;
     int p=0;
 
+    sf::Sprite test;
+
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
     {
+
         // get mouse position
         sf::Vector2i pos = sf::Mouse::getPosition(window);
 
@@ -123,16 +138,15 @@ int main() {
 
         }
 
-        
-        
         // Clear the whole window before rendering a new frame
         window.clear();
         
         // Draw some graphical entities
         window.draw(Board);
-        for (int i=0; i<32; i++) window.draw(f[i]);
+        for (int i=0; i<32; i++) window.draw(pieces[i]->getSprite());
 
         // End the current frame and display its contents on screen
         window.display();
     }
 }
+
