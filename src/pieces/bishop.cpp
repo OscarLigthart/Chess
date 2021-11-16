@@ -3,13 +3,12 @@
  */
 
 #include <SFML/Graphics.hpp>
-#include "../piece.cpp"
 
 class Bishop: public Piece 
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
-    Pawn (int player)
+    Bishop (int player)
     {
         std::cout << "Creating Bishop\n";
 
@@ -36,12 +35,7 @@ class Bishop: public Piece
      */ 
     sf::Sprite getSprite() { return this->sprite; }
     void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
-
-    /** 
-     *  Method to retrieve the sprite
-     */ 
-    int getInt() { return this->myInt; }
-
+    
     /**
      *  Method to check if move is valid
      */ 

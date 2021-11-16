@@ -3,7 +3,6 @@
  */
 
 #include <SFML/Graphics.hpp>
-#include "../piece.cpp"
 
 class Pawn: public Piece 
 {           // The class
@@ -36,11 +35,6 @@ class Pawn: public Piece
      */ 
     sf::Sprite getSprite() { return this->sprite; }
     void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
-
-    /** 
-     *  Method to retrieve the sprite
-     */ 
-    int getInt() { return this->myInt; }
 
     /**
      *  Method to check if move is valid

@@ -2,7 +2,13 @@
 // #include <GLFW/glfw3.h>
 #include <SFML/Graphics.hpp>
 #include <time.h>
+#include <piece.cpp>
 #include <pieces/pawn.cpp>
+#include <pieces/bishop.cpp>
+#include <pieces/king.cpp>
+#include <pieces/knight.cpp>
+#include <pieces/queen.cpp>
+#include <pieces/rook.cpp>
 #include <vector>
 
 
@@ -38,7 +44,7 @@ int pieces_board[8][8] = {
     {  25,26,27,28,29,30,31,32 }
 };
 
-void loadPosition()
+void pieceBuilder()
 {
     int k=0;
     for (int i=0;i<8;i++)
@@ -47,12 +53,51 @@ void loadPosition()
             int n = board[i][j];
             if (!n) continue;
 
-            // pieces[k] = new Pawn(0);
-            // pieces[k]->sprite.setPosition(piece_size*j, piece_size*i);
-            Pawn* pawn = new Pawn(0);
-            pawn->setSpritePosition(piece_size*j, piece_size*i);
+            int pieceId = abs(n) - 1;
+            int player = n > 0 ? 1 : 0;
+            
+            // initialize the piece
+            Piece* piece;
 
-            pieces.push_back(pawn);
+            switch(pieceId) {
+                case 0:
+                    {
+                        piece = new Rook(player);
+                        break;
+                    }
+                case 1: 
+                    {
+                        piece = new Knight(player);
+                        break;
+                    }
+                case 2:
+                    { 
+                        piece = new Bishop(player);
+                        break;
+                    }
+                case 3: 
+                    {
+                        piece = new Queen(player);
+                        break;
+                    }
+                case 4: 
+                    {   
+                        piece = new King(player);
+                        break;
+                    }
+                case 5: 
+                    {
+                        piece = new Pawn(player);
+                        break;
+                    }
+            }
+
+            // place piece correctly
+            piece->setSpritePosition(piece_size*j, piece_size*i);
+            piece->setPosition(i, j);
+
+            // add to vector
+            pieces.push_back(piece);
         }
 }
 
@@ -73,14 +118,12 @@ int main() {
         f[i].setScale(1.8f, 1.65f);
     }
 
-    loadPosition();
+    pieceBuilder();
 
     bool moving = false;
     float dx=0, dy=0;
     int n=0;
-    int p=0;
-
-    sf::Sprite test;
+    int p=-1;
 
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
@@ -112,8 +155,19 @@ int main() {
                         // do something if there is a piece there
                         // find out which piece it is as well
                         n = board[y][x];
-                        p = pieces_board[y][x];
 
+                        // check which piece is placed there
+                        for (int i=0; i<32; i++) {
+                            if (pieces[i]->getPosition()[0] == y && pieces[i]->getPosition()[1] == x) {
+                                p = i;
+
+                                std::cout << "Clicked\n";
+
+                                break;
+                            }
+                        };
+
+                        // indicate we start moving
                         if (n) 
                         {
                             moving = !moving;    
@@ -122,19 +176,22 @@ int main() {
                     // put down the piece
                     }
                     else {
-                        // update the boards
-                        pieces_board[y][x] = p;
+                        // update the board
                         board[y][x] = n;
 
                         // move the piece to the center of the square
-                        f[p-1].setPosition(piece_size*x, piece_size*y);
+                        pieces[p]->setSpritePosition(piece_size*x, piece_size*y);
+                        pieces[p]->setPosition(y, x);
+
+                        // reset
+                        p = -1;
                         moving = !moving;
                     }
 
                 }
 
             // place it on top of the mouse if we're in moving state
-            if (moving && p > 0) f[p-1].setPosition(pos.x - piece_size/2, pos.y - piece_size/2);
+            if (moving && p > -1) pieces[p]->setSpritePosition(pos.x - piece_size/2, pos.y - piece_size/2);
 
         }
 

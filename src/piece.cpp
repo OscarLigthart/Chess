@@ -36,16 +36,23 @@ class Piece {               // The class
         return true;
     }
 
+    /**
+     *  Method to change the position on the board
+     */
+    void setPosition(int y, int x) {
+        this->position[0] = y;
+        this->position[1] = x;
+    }
+
+    int* getPosition() {
+        return this->position;
+    }
+
     /** 
      *  Method to retrieve the sprite
      */ 
     virtual sf::Sprite getSprite() { return this->sprite; } 
     virtual void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
-
-    /** 
-     *  Method to retrieve the sprite
-     */ 
-    virtual int getInt() { return this->myInt; }
 
     /**
      *  Method to remove the piece from play
