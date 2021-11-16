@@ -5,13 +5,13 @@
 #include <SFML/Graphics.hpp>
 #include "../piece.cpp"
 
-class Pawn: public Piece 
+class Rook: public Piece 
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     Pawn (int player)
     {
-        std::cout << "Creating Pawn\n";
+        std::cout << "Creating Bishop\n";
 
         // set the texture here
         this->figures.loadFromFile("../img/pieces.png");
@@ -19,7 +19,7 @@ class Pawn: public Piece
         this->sprite.setTexture(this->figures);
 
         // std::cout << this->size;
-        this->sprite.setTextureRect( sf::IntRect(this->size*5, this->size*player, this->size, this->size)); 
+        this->sprite.setTextureRect( sf::IntRect(this->size*0, this->size*player, this->size, this->size)); 
         this->sprite.setScale(1.8f, 1.65f);   
     }
 
