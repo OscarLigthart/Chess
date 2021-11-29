@@ -23,12 +23,13 @@ class Rook: public Piece
     }
 
     /**
-     *  Method to move the piece from one place to the other
-     */
-    void move(int position[2]) {
-        
-        this->isValidMove(position);
+     *  Method to check if move is valid
+     */ 
+    bool isValidMove(int y, int x){
+
+        return true;
     }
+
 
     /** 
      *  Method to retrieve the sprite
@@ -36,12 +37,4 @@ class Rook: public Piece
     sf::Sprite getSprite() { return this->sprite; }
     void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
 
-    /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int position[2]){
-        
-        // check if 
-        return true;
-    }
 };

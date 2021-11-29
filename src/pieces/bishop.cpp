@@ -21,13 +21,13 @@ class Bishop: public Piece
         this->sprite.setTextureRect( sf::IntRect(this->size*2, this->size*player, this->size, this->size)); 
         this->sprite.setScale(1.8f, 1.65f);   
     }
-
+    
     /**
-     *  Method to move the piece from one place to the other
-     */
-    void move(int position[2]) {
-        
-        this->isValidMove(position);
+     *  Method to check if move is valid
+     */ 
+    bool isValidMove(int y, int x){
+
+        return true;
     }
 
     /** 
@@ -36,12 +36,4 @@ class Bishop: public Piece
     sf::Sprite getSprite() { return this->sprite; }
     void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
     
-    /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int position[2]){
-        
-        // check if 
-        return true;
-    }
 };

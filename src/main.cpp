@@ -164,8 +164,8 @@ int main() {
                         board[y][x] = n;
 
                         // move the piece to the center of the square
-                        pieces[p]->setSpritePosition(piece_size*x, piece_size*y);
-                        pieces[p]->setPosition(y, x);
+                        pieces[p]->move(y, x);
+                        
 
                         // reset
                         p = -1;

@@ -23,11 +23,18 @@ class Knight: public Piece
     }
 
     /**
-     *  Method to move the piece from one place to the other
-     */
-    void move(int position[2]) {
+     *  Method to check if move is valid
+     */ 
+    bool isValidMove(int y, int x){
+
+
+        // figure out a way to find out if this move is valid
+        // difference needs to be 2 and 1
+
         
-        this->isValidMove(position);
+
+        
+        return false;
     }
 
     /** 
@@ -36,12 +43,4 @@ class Knight: public Piece
     sf::Sprite getSprite() { return this->sprite; }
     void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
 
-    /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int position[2]){
-        
-        // check if 
-        return true;
-    }
 };

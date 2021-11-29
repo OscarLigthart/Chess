@@ -6,8 +6,11 @@
 
 class Piece {               // The class
   public:                   // Access specifier
-    int position[2];        // position in x and y coordinates
+    int y;                  // position in y coordinates
+    int x;                  // position in x coordinates
+    int position[2];
     int size = 56;          // required for cutting out the pieces 
+    int piece_size = 100;   // 800/8
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece
 
@@ -21,16 +24,30 @@ class Piece {               // The class
 
     /**
      *  Method to move the piece from one place to the other
+     *  Inherently changes the position of the piece and returns a boolean
+     *  denoting whether the move is valid
      */
-    void move(int position[2]) {
+    bool move(int y, int x) {
         
-        this->isValidMove(position);
+        if (!this->isValidMove(y, x)) { 
+
+            // move to old position
+            this->setSpritePosition(this->piece_size * this->x, this->piece_size * this->y);
+            this->setPosition(this->y, this->x);
+
+            // stop here
+            return false; 
+        }
+
+        // change the position of the piece
+        this->setSpritePosition(this->piece_size * x, this->piece_size * y);
+        this->setPosition(y, x);
     }
 
     /**
      *  Method to check if move is valid
      */ 
-    bool isValidMove(int position[2]){
+    virtual bool isValidMove(int y, int x){
 
         return true;
     }
@@ -39,6 +56,9 @@ class Piece {               // The class
      *  Method to change the position on the board
      */
     void setPosition(int y, int x) {
+        this->y = y;
+        this->x = x;
+
         this->position[0] = y;
         this->position[1] = x;
     }
