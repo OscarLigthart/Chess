@@ -27,7 +27,18 @@ class Queen: public Piece
      */ 
     bool isValidMove(int y, int x){
 
-        return true;
+        // get difference in movement
+        int dy = std::abs(this->y - y);
+        int dx = std::abs(this->x - x);
+
+        // rook and bishop combined
+        if (dy == dx) {
+            return true;
+        } else if (this->x == x || this->y == y){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** 

@@ -10,6 +10,7 @@
 #include <pieces/queen.cpp>
 #include <pieces/rook.cpp>
 #include <vector>
+#include <cmath>
 
 
 int size = 56; // required for cutting out the pieces 

@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
+
 class Knight: public Piece 
 {           // The class
   public:               // Access specifier
@@ -27,14 +28,16 @@ class Knight: public Piece
      */ 
     bool isValidMove(int y, int x){
 
+        // get difference in movement
+        int dy = std::abs(this->y - y);
+        int dx = std::abs(this->x - x);
 
-        // figure out a way to find out if this move is valid
-        // difference needs to be 2 and 1
-
-        
-
-        
-        return false;
+        // difference should be one and both should be lower than 3
+        if ((dx == 2 || dx == 1) && (dy == dx % 2 + 1)) {
+            return true;
+        } else {
+            return false;
+        }   
     }
 
     /** 

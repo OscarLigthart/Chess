@@ -27,7 +27,16 @@ class Bishop: public Piece
      */ 
     bool isValidMove(int y, int x){
 
-        return true;
+        // get difference in movement
+        int dy = std::abs(this->y - y);
+        int dx = std::abs(this->x - x);
+
+        // difference needs to be equal to go diagonal
+        if (dy == dx) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** 

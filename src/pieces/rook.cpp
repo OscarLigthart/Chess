@@ -27,7 +27,12 @@ class Rook: public Piece
      */ 
     bool isValidMove(int y, int x){
 
-        return true;
+        // to go straight, one coordinate needs to stay equal  
+        if (this->x == x || this->y == y) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
