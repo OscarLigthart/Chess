@@ -1,5 +1,4 @@
 #include <iostream>
-// #include <GLFW/glfw3.h>
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <piece.cpp>
