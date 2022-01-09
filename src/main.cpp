@@ -7,7 +7,7 @@
 #include <pieces/king.cpp>
 #include <pieces/knight.cpp>
 #include <pieces/queen.cpp>
-#include <pieces/rook.cpp>
+#include <pieces/rook.hpp>
 #include <vector>
 #include <cmath>
 
