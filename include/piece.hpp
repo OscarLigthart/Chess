@@ -31,6 +31,7 @@ class Piece {               // The class
 
     /**
      *  Method to check if move is valid
+     *  We just return true here because this function will be overwritten by the children
      */ 
     virtual bool isValidMove(int y, int x) { return true; }
 

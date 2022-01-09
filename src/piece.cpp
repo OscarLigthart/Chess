@@ -40,7 +40,6 @@ void Piece::setPosition(int y, int x) {
     this->position[1] = x;
 }
 
-// virtual
 void Piece::setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
 
 void Piece::remove(void) {
