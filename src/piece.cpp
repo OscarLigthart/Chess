@@ -3,6 +3,7 @@
  */
 
 // #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <piece.hpp>
 
 Piece::Piece() {

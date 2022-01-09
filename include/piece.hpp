@@ -27,17 +27,17 @@ class Piece {               // The class
      *  Inherently changes the position of the piece and returns a boolean
      *  denoting whether the move is valid
      */
-    bool move(int y, int x)
+    bool move(int y, int x);
 
     /**
      *  Method to check if move is valid
      */ 
-    virtual bool isValidMove(int y, int x) { return true }
+    virtual bool isValidMove(int y, int x) { return true; }
 
     /**
      *  Method to change the position on the board
      */
-    void setPosition(int y, int x)
+    void setPosition(int y, int x);
 
     /**
      *  Method to retrieve the position
@@ -48,12 +48,12 @@ class Piece {               // The class
      *  Method to retrieve the sprite
      */ 
     virtual sf::Sprite getSprite() { return this->sprite; } 
-    virtual void setSpritePosition(int x, int y)
+    virtual void setSpritePosition(int x, int y);
 
     /**
      *  Method to remove the piece from play
      */
-    void remove(void)
+    void remove(void);
 };
 
 #endif

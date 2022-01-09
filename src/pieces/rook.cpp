@@ -2,6 +2,7 @@
  *  Implementation of the Rook
  */
 
+#include <iostream>
 #include <pieces/rook.hpp>
 
 Rook::Rook(int player) {
