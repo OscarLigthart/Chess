@@ -6,17 +6,18 @@
 #define PIECE_ROOK
 
 #include <SFML/Graphics.hpp>
+#include <piece.hpp>
 
 class Rook: public Piece 
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
-    Rook (int player)
+    Rook (int player);
 
     /**
      *  Method to check if move is valid
      */ 
-    bool isValidMove(int y, int x)
+    bool isValidMove(int y, int x);
 
     /** 
      *  Method to retrieve the sprite
@@ -26,7 +27,7 @@ class Rook: public Piece
     /**
      *  Method to update sprite position
      */ 
-    void setSpritePosition(int x, int y)
+    void setSpritePosition(int x, int y);
 };
 
 #endif
