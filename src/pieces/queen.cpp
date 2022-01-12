@@ -1,49 +1,43 @@
 /**
- *  Class that holds the base logic of a piece
+ *  Implementation of the Rook
  */
 
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <pieces/rook.hpp>
 
-class Queen: public Piece 
-{           // The class
-  public:               // Access specifier
-    sf::Sprite sprite;  // the sprite for the piece
-    Queen (int player)
-    {
-        std::cout << "Creating Queen\n";
+Queen::Queen(int player) {
 
-        // set the texture here
-        this->figures.loadFromFile("../img/pieces.png");
-        // set the texture here
-        this->sprite.setTexture(this->figures);
+    // let the world know we're creating a queen
+    std::cout << "Creating Queen\n";
 
-        // std::cout << this->size;
-        this->sprite.setTextureRect( sf::IntRect(this->size*3, this->size*player, this->size, this->size)); 
-        this->sprite.setScale(1.8f, 1.65f);   
+    // set the texture here
+    this->figures.loadFromFile("../img/pieces.png");
+    // set the texture here
+    this->sprite.setTexture(this->figures);
+
+    // std::cout << this->size;
+    this->sprite.setTextureRect( sf::IntRect(this->size*3, this->size*player, this->size, this->size)); 
+    this->sprite.setScale(1.8f, 1.65f);  
+}
+
+bool Queen::isValidMove(int y, int x) {
+
+    // get difference in movement
+    int dy = std::abs(this->y - y);
+    int dx = std::abs(this->x - x);
+
+    // rook and bishop combined
+    if (dy == dx) {
+        return true;
+    } else if (this->x == x || this->y == y){
+        return true;
+    } else {
+        return false;
     }
+}
 
-    /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int y, int x){
+void Queen::setSpritePosition(int x, int y) { 
 
-        // get difference in movement
-        int dy = std::abs(this->y - y);
-        int dx = std::abs(this->x - x);
-
-        // rook and bishop combined
-        if (dy == dx) {
-            return true;
-        } else if (this->x == x || this->y == y){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /** 
-     *  Method to retrieve the sprite
-     */ 
-    sf::Sprite getSprite() { return this->sprite; }
-    void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
-};
+    // set the sprite position
+    this->sprite.setPosition(x, y); 
+}
