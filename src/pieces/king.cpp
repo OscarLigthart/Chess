@@ -1,50 +1,44 @@
 /**
- *  Class that holds the base logic of a piece
+ *  Implementation of the King
  */
 
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <pieces/king.hpp>
 
 
-class King: public Piece 
-{           // The class
-  public:               // Access specifier
-    sf::Sprite sprite;  // the sprite for the piece
-    King (int player)
-    {
-        std::cout << "Creating King\n";
+/**
+ *  Constructor
+ */
+King::King(int player) {
 
-        // set the texture here
-        this->figures.loadFromFile("../img/pieces.png");
-        // set the texture here
-        this->sprite.setTexture(this->figures);
+    // let the world know we're creating a king
+    std::cout << "Creating King\n";
 
-        // std::cout << this->size;
-        this->sprite.setTextureRect( sf::IntRect(this->size*4, this->size*player, this->size, this->size)); 
-        this->sprite.setScale(1.8f, 1.65f);   
+    // set the texture here
+    this->figures.loadFromFile("../img/pieces.png");
+    // set the texture here
+    this->sprite.setTexture(this->figures);
+
+    this->sprite.setTextureRect( sf::IntRect(this->size*4, this->size*player, this->size, this->size)); 
+    this->sprite.setScale(1.8f, 1.65f);
+}
+
+bool King::isValidMove(int y, int x){
+
+    // get difference in movement
+    int dy = std::abs(this->y - y);
+    int dx = std::abs(this->x - x);
+
+    // only a single step
+    if ((dy == 1 || dx == 1) && (dy < 2 && dx < 2)) {
+        return true;
+    } else {
+        return false;
     }
+}
 
-    /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int y, int x){
-        
-        // get difference in movement
-        int dy = std::abs(this->y - y);
-        int dx = std::abs(this->x - x);
-
-        // only a single step
-        if ((dy == 1 || dx == 1) && (dy < 2 && dx < 2)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    /** 
-     *  Method to retrieve the sprite
-     */ 
-    sf::Sprite getSprite() { return this->sprite; }
-    void setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
-
-};
+void King::setSpritePosition(int x, int y) { 
+    
+    // change position of sprite
+    this->sprite.setPosition(x, y); 
+}

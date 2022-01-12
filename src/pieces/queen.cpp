@@ -1,9 +1,9 @@
 /**
- *  Implementation of the Rook
+ *  Implementation of the Queen
  */
 
 #include <iostream>
-#include <pieces/rook.hpp>
+#include <pieces/queen.hpp>
 
 Queen::Queen(int player) {
 

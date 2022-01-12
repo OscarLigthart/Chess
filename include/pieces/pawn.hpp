@@ -8,10 +8,12 @@
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>
 
-class Queen: public Piece 
+class Pawn: public Piece 
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
+    int player;
+    bool has_moved = false;
     Pawn (int player);
 
     /**
