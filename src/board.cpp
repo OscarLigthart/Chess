@@ -17,26 +17,14 @@ Board::Board( ){
     // let the world know the board has been constructed
     std::cout << "Board constructed\n";
 
-    // initialize textures
-    sf::Texture b, figures;
+    // set the textures
+    this->boardSprite.setScale(0.8f, 0.8f);
+    for (int i=0; i<32; i++) {
+        this->f[i].setTexture(this->figures);
+        this->f[i].setScale(1.8f, 1.65f);
+    }
 
-    // set board texture
-    b.loadFromFile("../img/board.png");  
-    // this->boardSprite.setTexture(b);  
-
-    // TODO: need to find how to put this in a class variable
-    sf::Sprite Board(b);
-
-    // // set pieces texture
-    // figures.loadFromFile("../img/pieces.png");    
-    // sf::Sprite Figures(figures);
-
-    // // set the textures
-    // this->boardSprite.setScale(0.8f, 0.8f);
-    // for (int i=0; i<32; i++) {
-    //     this->f[i].setTexture(figures);
-    //     this->f[i].setScale(1.8f, 1.65f);
-    // }
+    buildPieces();
 }
 
 /**

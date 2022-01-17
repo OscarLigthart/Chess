@@ -18,6 +18,7 @@ class Board
     // sprites
     sf::Sprite f[32];
     sf::Sprite boardSprite;
+    sf::Texture figures;
 
     // pieces
     std::vector <Piece*> pieces;

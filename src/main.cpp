@@ -88,6 +88,13 @@ int main() {
     // Board* board = new Board();
     Board board;
 
+    // initialize textures
+    sf::Texture b, figures;
+    b.loadFromFile("../img/board.png");  
+    board.figures.loadFromFile("../img/pieces.png");    
+    board.boardSprite.setTexture(b);  
+    
+
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
     {
@@ -109,7 +116,7 @@ int main() {
         
         // Draw some graphical entities
         window.draw(board.boardSprite);
-        // for (int i=0; i<32; i++) window.draw(board.pieces[i]->getSprite());
+        for (int i=0; i<32; i++) window.draw(board.pieces[i]->getSprite());
 
         // End the current frame and display its contents on screen
         window.display();
