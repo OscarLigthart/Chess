@@ -28,6 +28,11 @@ class Interface
      *  param y: integer depicting which rank is clicked
      */
     void processInput(Board &board, int x, int y);
+
+    /**
+     *  Method to reset the interface and make it ready for next command
+     */
+    void reset();
 };
 
 #endif

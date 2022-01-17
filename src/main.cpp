@@ -71,8 +71,12 @@ int main() {
                     }
                     // if we are moving then this click means we're putting a piece somewhere
                     else {
+
                         // update the board
-                        board.process(interface.square, interface.selectedPiece);
+                        board.process(interface.square, interface.selectedPiece, y, x);
+
+                        // reset the interface so we can process the next click
+                        interface.reset();
                     }
 
                 }

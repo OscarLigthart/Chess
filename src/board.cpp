@@ -95,16 +95,18 @@ void Board::buildPieces( ){
  *  Method to process the user input to the board
  *  param square: the clicked square
  *  param selectedPiece: the code of the selected piece 
+ *  param y: the clicked rank
+ *  param x: the clicked file
  */
-void Board::process(int square, int selectedPiece) {
+void Board::process(int square, int selectedPiece, int y, int x) {
 
     // update the board
-    this->board[y][x] = this->square;
+    this->board[y][x] = square;
 
     // todo, maybe check legal moves here already?
 
     // move the piece to the center of the square
-    this->pieces[this->selectedPiece]->move(y, x);
+    this->pieces[selectedPiece]->move(y, x);
 
     // check gamestate here
     // checks
