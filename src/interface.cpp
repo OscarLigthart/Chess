@@ -22,42 +22,30 @@ Interface::Interface() {
  */
 void Interface::processInput(Board &board, int x, int y) {
 
-    // pick up the piece
-    if (!this->moving){
+    // do something if there is a piece there
+    // find out which piece it is as well
+    this->square = board.board[y][x];
 
-        // do something if there is a piece there
-        // find out which piece it is as well
-        this->square = board.board[y][x];
+    // check which piece is placed there
+    for (int i=0; i<32; i++) {
+        if (board.pieces[i]->getPosition()[0] == y && board.pieces[i]->getPosition()[1] == x) {
+            this->selectedPiece = i;
 
-        // check which piece is placed there
-        for (int i=0; i<32; i++) {
-            if (board.pieces[i]->getPosition()[0] == y && board.pieces[i]->getPosition()[1] == x) {
-                this->selectedPiece = i;
-
-                std::cout << "Clicked\n";
-                break;
-            }
-        };
-
-        // indicate we start moving, if we have a piece on the square
-        if (this->square) 
-        {
-            this->moving = !this->moving;    
+            std::cout << "Clicked\n";
+            break;
         }
+    };
 
-    // put down the piece
+    // indicate we start moving, if we have a piece on the square
+    if (this->square) 
+    {
+        this->moving = !this->moving;    
     }
-    else {
-        // update the board
-        board.board[y][x] = this->square;
+}
 
-        std::cout << "Clicked\n";
-
-        // move the piece to the center of the square
-        board.pieces[this->selectedPiece]->move(y, x);
-        
-        // reset
-        this->selectedPiece = -1;
-        this->moving = !this->moving;
-    }
+void Interface::reset(){
+    
+    // reset variables
+    this->selectedPiece = -1;
+    this->moving = !this->moving;
 }

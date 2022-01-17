@@ -37,10 +37,8 @@ int main() {
     board.figures.loadFromFile("../img/pieces.png");    
     board.boardSprite.setTexture(b);  
 
-
     // initialize the interface
     Interface interface;
-    int selectedPiece;
 
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
@@ -66,12 +64,21 @@ int main() {
                     int x = float(pos.x)/800 * 8;
                     int y = float(pos.y)/800 * 8;
 
-                    // process the input on the board
-                    interface.processInput(board, x, y);
+                    // if we're not already moving a piece we should process the input
+                    // to determine which piece is clicked
+                    if (!interface.moving) {
+                        interface.processInput(board, x, y);
+                    }
+                    // if we are moving then this click means we're putting a piece somewhere
+                    else {
+                        // update the board
+                        board.process(interface.square, interface.selectedPiece);
+                    }
+
                 }
 
             // place it on top of the mouse if we're in moving state
-            if (interface.moving && selectedPiece > -1) {
+            if (interface.moving && interface.selectedPiece > -1) {
                 board.pieces[interface.selectedPiece]->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
             }
         }

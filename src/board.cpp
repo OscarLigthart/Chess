@@ -90,3 +90,22 @@ void Board::buildPieces( ){
             this->pieces.push_back(piece);
         }
 }
+
+/**
+ *  Method to process the user input to the board
+ */
+void Board::process(int square, int selectedPiece) {
+
+    // update the board
+    this->board[y][x] = this->square;
+
+    // todo, maybe check legal moves here already?
+
+    // move the piece to the center of the square
+    this->pieces[this->selectedPiece]->move(y, x);
+
+    // check gamestate here
+    // checks
+    // checkmate
+    // etc etc
+}
