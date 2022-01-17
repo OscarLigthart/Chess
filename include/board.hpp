@@ -41,11 +41,11 @@ class Board
     Board();
 
     /**
-     *  Method to process the input
-     *  param x: integer depicting which file is clicked
-     *  param y: integer depicting which rank is clicked
-     */
-    int processInput(int x, int y);
+    *  Method to process the user input to the board
+    *  param square: the clicked square
+    *  param selectedPiece: the code of the selected piece 
+    */
+    void process(int square, int selectedPiece);
 
     /**
      *  Method to build the pieces to the board

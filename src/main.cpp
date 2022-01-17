@@ -60,7 +60,7 @@ int main() {
                 if (event.key.code == sf::Mouse::Left)
                 {
                     
-                    // figure out which board coordinates
+                    // figure out which board coordinates are clicked
                     int x = float(pos.x)/800 * 8;
                     int y = float(pos.y)/800 * 8;
 

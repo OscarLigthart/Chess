@@ -93,6 +93,8 @@ void Board::buildPieces( ){
 
 /**
  *  Method to process the user input to the board
+ *  param square: the clicked square
+ *  param selectedPiece: the code of the selected piece 
  */
 void Board::process(int square, int selectedPiece) {
 
