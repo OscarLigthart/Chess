@@ -27,15 +27,20 @@ set(HEADERS
 )
 
 set(SOURCES
+    src/main.cpp
     src/board.cpp
     src/piece.cpp
     src/pieces/rook.cpp
+    src/pieces/bishop.cpp
+    src/pieces/knight.cpp
+    src/pieces/queen.cpp
+    src/pieces/king.cpp
+    src/pieces/pawn.cpp
 )
 
 add_executable(chess 
-    src/main.cpp
-    src/pieces/rook.cpp
-    include/pieces/rook.hpp
+    ${SOURCES}
+    ${HEADERS}
 )
 
 target_link_libraries(chess sfml-graphics sfml-audio)
