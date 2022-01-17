@@ -2,7 +2,6 @@
  *  Class that holds the base logic of a piece
  */
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <piece.hpp>
 
