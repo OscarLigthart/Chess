@@ -24,6 +24,7 @@ Board::Board( ){
         this->f[i].setScale(1.8f, 1.65f);
     }
 
+    // build the pieces on initialization
     buildPieces();
 }
 

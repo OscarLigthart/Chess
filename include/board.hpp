@@ -41,6 +41,13 @@ class Board
     Board();
 
     /**
+     *  Method to process the input
+     *  param x: integer depicting which file is clicked
+     *  param y: integer depicting which rank is clicked
+     */
+    int processInput(int x, int y);
+
+    /**
      *  Method to build the pieces to the board
      */
     void buildPieces();
@@ -50,14 +57,6 @@ class Board
      *  Requests a clicked piece as input argument
      */
     void getValidMoves();
-    
-
-    /**
-     *  Method to draw the board. Starts by drawing an empty board,
-     *  then starts putting the pieces on there. 
-     */
-    void draw(void);
-
 };
 
 #endif
