@@ -28,7 +28,7 @@ class Bishop: public Piece
     /**
      *  Method that retrieves all moves for this piece
      */ 
-    int getMoves(Board &board, int y, int x);
+    std::vector<int> getMoves(Board &board, int y, int x);
 
     /** 
      *  Method to retrieve the sprite
