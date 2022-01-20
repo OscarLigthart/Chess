@@ -4,12 +4,24 @@
  */
 
 #include <legal_move_generator.hpp>
+#include <board.hpp>
 
 /**
  *  Constructor
  */
 LegalMoveGenerator::LegalMoveGenerator() {
 
+    // maybe use a pointer to the board? Or just use the function as a whoe
+
+}
+
+/**
+ *  Generate function
+ */
+LegalMoveGenerator::generate(){
+
+    // get bishop board pieces
+    
 }
 
 // --> IN THIS CLASS    

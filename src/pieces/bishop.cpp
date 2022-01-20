@@ -45,7 +45,7 @@ bool Bishop::isValidMove(int y, int x) {
  *
  *  @return list of arrays depicting a diagonal in coordinates
  */ 
-std::vector<std::array<int, 2>> Bishop::getMoves(Board &board, int y, int x) {
+std::vector<std::array<int, 2>> Bishop::getMoves(Board &board) {
 
     // generate the directions to move in
     int directions[4][2] = {{-1,1},{1,1},{-1,-1}, {1, -1}};
@@ -57,7 +57,7 @@ std::vector<std::array<int, 2>> Bishop::getMoves(Board &board, int y, int x) {
     for (int i=0; i<4; i++) {
         
         // set the current position to the actual position
-        std::array<int,2> start = {y, x};
+        std::array<int,2> start = {this->y, this->x};
 
         // keep going down this diagonal as long as we're not out of bounds
         bool invalid = false;

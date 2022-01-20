@@ -18,6 +18,8 @@ class LegalMoveGenerator
      */    
     LegalMoveGenerator();
 
+    void generate(Board &board);
+
 };
 
 #endif
