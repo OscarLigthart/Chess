@@ -38,7 +38,7 @@ class Piece {               // The class
     /**
      *  Method that retrieves all moves for a piece
      */ 
-    virtual int getMoves(int y, int x);
+    virtual void getMoves(int y, int x) { return; }
 
     /**
      *  Method to change the position on the board

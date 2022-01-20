@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <piece.hpp>
+#include <vector>
+#include <array>
 
 Piece::Piece() {
 

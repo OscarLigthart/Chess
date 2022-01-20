@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>
+#include <board.hpp>
 
 class Pawn: public Piece 
 {           // The class
@@ -24,7 +25,7 @@ class Pawn: public Piece
     /**
      *  Method that retrieves all moves for this piece
      */ 
-    int getMoves(int y, int x);
+    std::vector<std::array<int, 2>> getMoves(Board &board, int y, int x);
 
     /** 
      *  Method to retrieve the sprite
