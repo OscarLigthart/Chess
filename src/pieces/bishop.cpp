@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <pieces/bishop.hpp>
+#include <board.hpp>
 
 
 Bishop::Bishop(int player) {
@@ -19,6 +20,8 @@ Bishop::Bishop(int player) {
     // std::cout << this->size;
     this->sprite.setTextureRect( sf::IntRect(this->size*2, this->size*player, this->size, this->size)); 
     this->sprite.setScale(1.8f, 1.65f); 
+
+    this->player = player;
 }
 
 bool Bishop::isValidMove(int y, int x) {
@@ -37,9 +40,36 @@ bool Bishop::isValidMove(int y, int x) {
 
 /**
  *  Method that retrieves all moves for this piece
+ *
+ *  @return list of arrays depicting a diagonal in coordinates
  */ 
-bool Bishop::getMoves(int y, int x) {
+int Bishop::getMoves(Board &board, int y, int x) {
+
+    // generate the directions to move in
+    int directions[4][2] = {{-1,1},{1,1},{-1,-1}, {1, -1}}
+
+    // initialize valid move list
+    int moves[][];
+
+    // loop over diagonals
+    for (int i=0; i<4; i++) {
+
+        // keep going down thi sdiagonal as long as we're not out of bounds
+        bool invalid = false;
+        while (!invalid){
+            
+            // take current position and add the direction
+            int new_move[] = {y + directions[i][0], x + directions[i][1]}
+
+            // now test if we hit a piece or are out of bounds
+
+
+        }
+
+    }
 
 }
+
+
 
 void Bishop::setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }

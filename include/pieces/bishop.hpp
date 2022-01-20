@@ -7,11 +7,17 @@
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>
+#include <board.hpp>
 
 class Bishop: public Piece 
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
+    int player;
+
+    /**
+     *  Constructor
+     */
     Bishop (int player);
 
     /**
@@ -22,7 +28,7 @@ class Bishop: public Piece
     /**
      *  Method that retrieves all moves for this piece
      */ 
-    int getMoves(int y, int x);
+    int getMoves(Board &board, int y, int x);
 
     /** 
      *  Method to retrieve the sprite
