@@ -21,6 +21,11 @@ class Pawn: public Piece
      */ 
     bool isValidMove(int y, int x);
 
+    /**
+     *  Method that retrieves all moves for this piece
+     */ 
+    int getMoves(int y, int x);
+
     /** 
      *  Method to retrieve the sprite
      */ 

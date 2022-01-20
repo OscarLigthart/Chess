@@ -36,6 +36,11 @@ class Piece {               // The class
     virtual bool isValidMove(int y, int x) { return true; }
 
     /**
+     *  Method that retrieves all moves for a piece
+     */ 
+    virtual int getMoves(int y, int x);
+
+    /**
      *  Method to change the position on the board
      */
     void setPosition(int y, int x);

@@ -35,4 +35,11 @@ bool Bishop::isValidMove(int y, int x) {
     }
 }
 
+/**
+ *  Method that retrieves all moves for this piece
+ */ 
+bool Bishop::getMoves(int y, int x) {
+
+}
+
 void Bishop::setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }
