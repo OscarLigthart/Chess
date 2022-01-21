@@ -42,7 +42,7 @@ bool King::isValidMove(int y, int x){
  *
  *  @return list of arrays depicting a diagonal in coordinates
  */ 
-std::vector<std::array<int, 2>> Queen::getMoves(int board[8][8]) {
+std::vector<std::array<int, 2>> King::getMoves(int board[8][8]) {
 
     // generate the directions to move in
     int directions[8][2] = {{-1,0},{1,0},{0,-1}, {0,1},{-1,1},{1,1},{-1,-1},{1, -1}};
