@@ -91,6 +91,7 @@ std::vector<std::array<int, 2>> Bishop::getMoves(int board[8][8]) {
         }
     }
 
+    // the total set of valid moves
     return moves;
 }
 
