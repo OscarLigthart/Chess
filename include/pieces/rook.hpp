@@ -23,7 +23,7 @@ class Rook: public Piece
     /**
      *  Method that retrieves all moves for this piece
      */ 
-    std::vector<std::array<int, 2>> getMoves(Board &board, int y, int x);
+    std::vector<std::array<int, 2>> getMoves(int board[8][8]);
 
     /** 
      *  Method to retrieve the sprite
