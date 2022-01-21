@@ -13,7 +13,7 @@ class Bishop: public Piece
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
-    int player;
+    using Piece::player;
 
     /**
      *  Constructor
@@ -28,7 +28,7 @@ class Bishop: public Piece
     /**
      *  Method that retrieves all moves for this piece
      */ 
-    std::vector<std::array<int, 2>> getMoves(Board &board);
+    std::vector<std::array<int, 2>> getMoves(int board[8][8]);
 
     /** 
      *  Method to retrieve the sprite

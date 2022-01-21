@@ -12,6 +12,9 @@
 #include <pieces/queen.hpp>
 #include <pieces/rook.hpp>
 
+#include <vector>
+#include <array>
+
 Board::Board( ){
 
     // let the world know the board has been constructed
@@ -63,6 +66,18 @@ void Board::buildPieces( ){
                 case 2:
                     { 
                         piece = new Bishop(player);
+                        piece->setPosition(i, j);
+
+                        std::vector<std::array<int, 2>> x = piece->getMoves(this->board);
+
+                        for (std::array<int,2> row: x){
+                            for (int i: row) {
+                                std::cout << i << ' ';
+                            }
+                            std::cout << "\n";
+                        }
+
+                        std::cout << "DONE\n";
                         break;
                     }
                 case 3: 

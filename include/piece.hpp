@@ -14,6 +14,7 @@ class Piece {               // The class
     int position[2];
     int size = 56;          // required for cutting out the pieces 
     int piece_size = 100;   // 800/8
+    int player;
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece
 
@@ -38,7 +39,17 @@ class Piece {               // The class
     /**
      *  Method that retrieves all moves for a piece
      */ 
-    virtual void getMoves(int y, int x) { return; }
+    virtual std::vector<std::array<int, 2>> getMoves(int board[8][8]);
+
+    /**
+     *  Method to check for collisions
+     */
+    bool checkCollision(std::vector<std::array<int, 2>> &moves, std::array<int, 2> new_move, int square);
+
+    /**
+     *  Method to check if desired location is out of bounds
+     */
+    bool checkOutOfBounds(int y, int x);
 
     /**
      *  Method to change the position on the board

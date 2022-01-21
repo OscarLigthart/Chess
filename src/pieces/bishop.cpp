@@ -23,6 +23,7 @@ Bishop::Bishop(int player) {
     this->sprite.setTextureRect( sf::IntRect(this->size*2, this->size*player, this->size, this->size)); 
     this->sprite.setScale(1.8f, 1.65f); 
 
+    // set the player var
     this->player = player;
 }
 
@@ -45,7 +46,7 @@ bool Bishop::isValidMove(int y, int x) {
  *
  *  @return list of arrays depicting a diagonal in coordinates
  */ 
-std::vector<std::array<int, 2>> Bishop::getMoves(Board &board) {
+std::vector<std::array<int, 2>> Bishop::getMoves(int board[8][8]) {
 
     // generate the directions to move in
     int directions[4][2] = {{-1,1},{1,1},{-1,-1}, {1, -1}};
@@ -63,50 +64,24 @@ std::vector<std::array<int, 2>> Bishop::getMoves(Board &board) {
         bool invalid = false;
 
         while (!invalid){
-            
+
             // take current position and add the direction
             std::array<int,2> new_move = {start[0] + directions[i][0], start[1] + directions[i][1]};
 
+            // start by checking for out of bounds
+            bool outOfBounds = this->checkOutOfBounds(new_move[1], new_move[0]);
+
+            // stop if we are out of bounds
+            if (outOfBounds) { break; }
+            
             // retrieve the piece that is placed on the square of the new move
-            int square = board.board[new_move[0]][new_move[1]];
+            int square = board[new_move[0]][new_move[1]];
 
-            // now test if we hit a piece or are out of bounds
-            if (square != 0){
+            // check for collisions
+            bool collision = this->checkCollision(moves, new_move, square);
 
-                // white player
-                if (this->player == 0){
-                    
-                    // own piece
-                    if (square > 0) {
-                        // don't add move
-                        break;
-                    }
-
-                    // other piece
-                    else {
-                        // add capture move
-                        moves.push_back(new_move);
-                        break;
-                    }
-                }
-
-                // black player
-                else {
-                    
-                    // own piece
-                    if (square < 0) {
-                        // don't add move
-                        break;
-                    }
-
-                    // other piece
-                    else {
-                        // add capture move
-                        moves.push_back(new_move);
-                        break;
-                    }
-                }
-            }
+            // if we collided we should stop
+            if (collision) { break; }
 
             // if we reach this we can add the move to the total moves
             moves.push_back(new_move);
