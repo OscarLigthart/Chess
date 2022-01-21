@@ -7,7 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>
-#include <board.hpp>
 
 class Queen: public Piece 
 {           // The class
