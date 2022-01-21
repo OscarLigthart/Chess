@@ -50,7 +50,7 @@ std::vector<std::array<int, 2>> Queen::getMoves(int board[8][8]) {
     std::vector<std::array<int,2>> moves;
 
     // loop over diagonals
-    for (int i=0; i<4; i++) {
+    for (int i=0; i<8; i++) {
         
         // set the current position to the actual position
         std::array<int,2> start = {this->y, this->x};
