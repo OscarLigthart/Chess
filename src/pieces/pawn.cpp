@@ -52,6 +52,12 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
 
     // TODO IMPLEMENT
 
+    // keep state of already having moved
+
+    // check for diagonals forward if there are enemy pieces
+
+    // en passant LATER
+
     // generate the directions to move in
     int directions[4][2] = {{-1,0},{1,0},{0,-1}, {0,1}};
 
