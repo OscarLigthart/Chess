@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <iostream>
 
 /**
  *  Constructor
@@ -39,7 +40,7 @@ void Moves::generateNotations(){
         notation += static_cast<char>('a' + this->moves[i][1]);
 
         // convert the first (y) into the rank
-        notation += std::to_string(this->moves[i][0]);
+        notation += std::to_string(this->moves[i][0] + 1);
 
         // add this to the notations
         this->notations.push_back(notation);

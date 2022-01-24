@@ -24,6 +24,11 @@ class LegalMoveGenerator
      *  Method to generate all possible moves given a board configuration
      */
     std::vector<Moves> generate();
+
+    /** 
+     *  Method to pretty print all available move notations given a board configurations
+     */
+    void printMoves();    
 };
 
 #endif

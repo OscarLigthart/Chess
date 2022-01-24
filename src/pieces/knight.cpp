@@ -21,7 +21,10 @@ Knight::Knight(int player) {
 
     // std::cout << this->size;
     this->sprite.setTextureRect( sf::IntRect(this->size*1, this->size*player, this->size, this->size)); 
-    this->sprite.setScale(1.8f, 1.65f);   
+    this->sprite.setScale(1.8f, 1.65f);
+
+    this->player = player;
+    this->notation = "N";   
 }
 
 bool Knight::isValidMove(int y, int x) {
@@ -74,12 +77,8 @@ std::vector<std::array<int, 2>> Knight::getMoves(int board[8][8]) {
         // retrieve the piece that is placed on the square of the new move
         int square = board[new_move[0]][new_move[1]];
 
-        // create pointer to a boolean that denotes both whether a collision occurred
-        // and whether this is with an opponent's piece or not
-        bool* collision;
-
         // check for collisions, and whether they arrise with an opponent's piece or not
-        collision = this->checkCollision(new_move, square);
+        std::array<bool, 2> collision = this->checkCollision(new_move, square);
 
         // if we collided we should stop
         if (collision[0]) { 

@@ -25,6 +25,8 @@ Bishop::Bishop(int player) {
 
     // set the player var
     this->player = player;
+    this->notation = "B";
+    
 }
 
 bool Bishop::isValidMove(int y, int x) {
@@ -77,12 +79,14 @@ std::vector<std::array<int, 2>> Bishop::getMoves(int board[8][8]) {
             // retrieve the piece that is placed on the square of the new move
             int square = board[new_move[0]][new_move[1]];
             
-            // create pointer to a boolean that denotes both whether a collision occurred
-            // and whether this is with an opponent's piece or not
-            bool* collision;
-
             // check for collisions, and whether they arrise with an opponent's piece or not
-            collision = this->checkCollision(new_move, square);
+            std::array<bool, 2> collision = this->checkCollision(new_move, square);
+
+            std::cout << "NEWMOVE" << new_move[0] << new_move[1] << "\n";
+
+            std::cout << "BOOLEANS" << collision[0] << collision[1] << "\n";
+
+            std::cout << "SQUARE " << square << "\n";
 
             // if we collided we should stop
             if (collision[0]) { 

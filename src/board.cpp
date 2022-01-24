@@ -5,6 +5,7 @@
 #include <iostream>
 #include <board.hpp>
 #include <piece.hpp>
+#include <moves.hpp>
 #include <pieces/bishop.hpp>
 #include <pieces/king.hpp>
 #include <pieces/knight.hpp>
@@ -66,18 +67,6 @@ void Board::buildPieces( ){
                 case 2:
                     { 
                         piece = new Bishop(player);
-                        piece->setPosition(i, j);
-
-                        std::vector<std::array<int, 2>> x = piece->getMoves(this->board);
-
-                        for (std::array<int,2> row: x){
-                            for (int i: row) {
-                                std::cout << i << ' ';
-                            }
-                            std::cout << "\n";
-                        }
-
-                        std::cout << "DONE\n";
                         break;
                     }
                 case 3: 

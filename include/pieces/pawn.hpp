@@ -13,9 +13,9 @@ class Pawn: public Piece
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
+    using Piece::notation;
     int playerValue; // the player value translated to -1 and 1
     bool has_moved = false;
-    std::string notation = "";
 
     /**
      *  Constructor

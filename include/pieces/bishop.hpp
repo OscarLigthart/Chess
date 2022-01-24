@@ -14,7 +14,8 @@ class Bishop: public Piece
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
-    std::string notation = "B";
+    using Piece::notation;
+    // std::string notation = "B";
 
     /**
      *  Constructor

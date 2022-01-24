@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <board.hpp>
+#include <legal_move_generator.hpp>
 #include <interface.hpp>
 #include <vector>
 #include <cmath>
@@ -40,6 +41,9 @@ int main() {
     // initialize the interface
     Interface interface;
 
+    // initialize the legal move generator
+    LegalMoveGenerator lmg = LegalMoveGenerator(board);
+
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
     {
@@ -63,6 +67,9 @@ int main() {
                     // figure out which board coordinates are clicked
                     int x = float(pos.x)/800 * 8;
                     int y = float(pos.y)/800 * 8;
+
+                    // REMOVE AFTER
+                    lmg.printMoves();
 
                     // if we're not already moving a piece we should process the input
                     // to determine which piece is clicked

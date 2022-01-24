@@ -54,11 +54,11 @@ std::vector<std::array<int, 2>> Piece::getMoves(int board[8][8]) {
  *                  opponent's piece (true|false)
  *             }
  */ 
-bool * Piece::checkCollision(std::array<int, 2> new_move, int square) {
+std::array<bool, 2> Piece::checkCollision(std::array<int, 2> new_move, int square) {
 
     // we need two booleans to denote a collision and whether that is with an
     // opponent's piece
-    static bool b[2] = {false, false};
+    std::array<bool, 2> b = {false, false};
 
     // only check if we find a piece on the square
     if (square != 0){

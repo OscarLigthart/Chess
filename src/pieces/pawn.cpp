@@ -28,6 +28,8 @@ Pawn::Pawn(int player) {
 
     // set playervalue
     this->playerValue = player == 1 ? 1 : -1;  
+    
+    this->notation = "";
 }
 
 bool Pawn::isValidMove(int y, int x) {
@@ -85,8 +87,7 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
         if (directions[i][1] == 0) {
 
             // check for collisions
-            bool* collision;
-            collision = this->checkCollision(new_move, square);
+            std::array<bool, 2> collision = this->checkCollision(new_move, square);
 
             // add the move if it doesn't collide
             if (!collision[0]) { moves.push_back(new_move); }
@@ -97,8 +98,7 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
         else {
             
             // check for 
-            bool* collision;
-            collision = this->checkCollision(new_move, square);
+            std::array<bool, 2> collision = this->checkCollision(new_move, square);
 
             // add the move if it will capture an opponent's piece
             if (collision[1]) { moves.push_back(new_move); }
