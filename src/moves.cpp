@@ -41,6 +41,7 @@ void Moves::generateNotations(){
         // convert the first (y) into the rank
         notation += std::to_string(this->moves[i][0]);
 
+        // add this to the notations
         this->notations.push_back(notation);
     }
 }
