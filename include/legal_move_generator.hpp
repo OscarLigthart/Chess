@@ -23,14 +23,7 @@ class LegalMoveGenerator
     /**
      *  Method to generate all possible moves given a board configuration
      */
-    void generate();
-
-    /**
-     *  Method to get all the moves in human readable form
-     */ 
-    Moves[] notations():
-
-
+    std::vector<Moves> generate();
 };
 
 #endif

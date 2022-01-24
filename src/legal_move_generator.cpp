@@ -5,32 +5,40 @@
 
 #include <legal_move_generator.hpp>
 #include <board.hpp>
+#include <moves.hpp>
+#include <piece.hpp>
 
 /**
  *  Constructor
  */
-LegalMoveGenerator::LegalMoveGenerator() {
+LegalMoveGenerator::LegalMoveGenerator(Board &board) {
 
-    // maybe use a pointer to the board? Or just use the function as a whoe
-
+    // we need to store the board here
+    this->board = &board;
 }
 
 /**
  *  Generate function
  */
-LegalMoveGenerator::generate(){
+std::vector<Moves> LegalMoveGenerator::generate(){
 
-    // get bishop board pieces
-    
+    // initialize moves
+    std::vector<Moves> moves;
+
+    // loop over all the pieces on the board
+    for (int i=0; i<this->board->pieces.size(); i++) {
+        
+        // extract the piece name
+        Piece* piece = this->board->pieces[i];
+
+        // generate the moves
+        std::vector<std::array<int, 2>> piece_moves;
+        piece_moves = piece->getMoves(this->board->board);
+
+        // convert to move class
+        Moves move = Moves(piece->notation, piece_moves);
+
+        // add this move to all the moves
+        moves.push_back(move);
+    } 
 }
-
-// --> IN THIS CLASS    
-// given a player, all the legal moves should be calculated
-
-// --> IN THE PIECE CLASSES
-// to do so, we will need to get all possible moves from the pieces themselves, 
-// these will have to be sorted based on closest to farthest move
-
-// How to split the board and legalmovegenerator?
-
-// What to do with captures?

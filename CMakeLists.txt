@@ -25,6 +25,8 @@ set(HEADERS
     include/pieces/rook.hpp
     include/pieces/pawn.hpp
     include/pieces/knight.hpp
+    include/legal_move_generator.hpp
+    include/moves.hpp
 )
 
 set(SOURCES
@@ -38,6 +40,8 @@ set(SOURCES
     src/pieces/queen.cpp
     src/pieces/king.cpp
     src/pieces/pawn.cpp
+    src/legal_move_generator.cpp
+    src/moves.cpp
 )
 
 add_executable(chess 

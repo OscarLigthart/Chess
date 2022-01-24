@@ -33,7 +33,7 @@ void Moves::generateNotations(){
         std::string notation;
 
         // start string with the piece name
-        notation += this->piece.notation;
+        notation += this->piece;
 
         // convert the file first
         notation += static_cast<char>('a' + this->moves[i][1]);
