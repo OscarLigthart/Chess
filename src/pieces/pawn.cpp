@@ -56,15 +56,15 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
     // depending on the player we have different directions in y-value
     // which is depicted as -1 or 1 in this->playerValue
     std::vector<std::array<int,2>> directions = {
+        {this->playerValue, 1},
+        {this->playerValue, -1},
         {this->playerValue, 0},
-        {this->playerValue, 1}.
-        {this->playerValue, -1}
     };
 
-    // // pawns can move two places if they haven't already
-    // if (!this->has_moved) {
-    //     directions.push_back(std::array<int,2> {2 * this->playerValue,0});
-    // }
+    // pawns can move two places if they haven't already
+    if (!this->has_moved) {
+        directions.push_back(std::array<int,2> {2 * this->playerValue,0});
+    }
 
     // initialize valid move list
     std::vector<std::array<int,2>> moves;
@@ -75,17 +75,22 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
     // loop over the directions
     for (int i=0; i<directions.size(); i++) {
 
+        // take current position and add the direction
+        std::array<int,2> new_move = {start[0] + directions[i][0], start[1] + directions[i][1]};
+
+        // retrieve the piece that is placed on the square of the new move
+        int square = board[new_move[0]][new_move[1]];
+
         // for the forward directions, we can't capture
         if (directions[i][1] == 0) {
-            
+
             // check for collisions
             bool* collision;
             collision = this->checkCollision(new_move, square);
 
             // add the move if it doesn't collide
             if (!collision[0]) { moves.push_back(new_move); }
-
-            // process the hasn't moved part
+            else { break; }
         }
         // for the sideways directions, we should check for captures,
         // we can only make the move if it's a capture

@@ -49,7 +49,7 @@ std::vector<std::array<int, 2>> Knight::getMoves(int board[8][8]) {
     int directions[8][2] = {
         {1,2}, {2,1},
         {2,-1}, {1,-2},
-        {-2,-1}, {-1,-2}
+        {-2,-1}, {-1,-2},
         {-2,1}, {-1,2}
     };
 
