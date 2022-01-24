@@ -7,18 +7,29 @@
 #define LEGAL_MOVE_GENERATOR
 
 #include <board.hpp>
+#include <moves.hpp>
 
 
 class LegalMoveGenerator 
   {
     public:
+    Board* board;
 
     /**
      *  Constructor
      */    
-    LegalMoveGenerator();
+    LegalMoveGenerator(Board &board);
 
-    void generate(Board &board);
+    /**
+     *  Method to generate all possible moves given a board configuration
+     */
+    void generate();
+
+    /**
+     *  Method to get all the moves in human readable form
+     */ 
+    Moves[] notations():
+
 
 };
 

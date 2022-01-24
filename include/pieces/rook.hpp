@@ -13,6 +13,11 @@ class Rook: public Piece
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
+    std::string notation = "R";
+
+    /**
+     *  Constructor
+     */
     Rook (int player);
 
     /**

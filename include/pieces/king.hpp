@@ -13,6 +13,11 @@ class King: public Piece
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
+    std::string notation = "K";
+
+    /**
+     *  Constructor
+     */ 
     King (int player);
 
     /**

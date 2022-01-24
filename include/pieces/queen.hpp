@@ -13,6 +13,11 @@ class Queen: public Piece
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
+    std::string notation = "Q";
+
+    /**
+     *  Constructor
+     */
     Queen (int player);
 
     /**

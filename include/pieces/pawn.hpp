@@ -14,8 +14,12 @@ class Pawn: public Piece
     sf::Sprite sprite;  // the sprite for the piece
     using Piece::player;
     int playerValue; // the player value translated to -1 and 1
-
     bool has_moved = false;
+    std::string notation = "";
+
+    /**
+     *  Constructor
+     */
     Pawn (int player);
 
     /**
