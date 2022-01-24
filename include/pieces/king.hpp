@@ -12,6 +12,7 @@ class King: public Piece
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
+    using Piece::player;
     King (int player);
 
     /**

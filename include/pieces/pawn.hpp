@@ -12,7 +12,9 @@ class Pawn: public Piece
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
-    int player;
+    using Piece::player;
+    int playerValue; // the player value translated to -1 and 1
+
     bool has_moved = false;
     Pawn (int player);
 

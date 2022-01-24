@@ -45,11 +45,20 @@ std::vector<std::array<int, 2>> Piece::getMoves(int board[8][8]) {
 }
 
 /**
- *  Method that retrieves all moves for this piece
+ *  Method that checks if a suggested move yields a collision
+ *  and whether that collision is with your own or an opponents piece
  *
- *  @return list of arrays depicting a diagonal in coordinates
+ *  @return boolean array holding 2 booleans: 
+ *             {
+ *                  collision (true|false),
+ *                  opponent's piece (true|false)
+ *             }
  */ 
-bool Piece::checkCollision(std::vector<std::array<int, 2>> &moves, std::array<int, 2> new_move, int square) {
+bool * Piece::checkCollision(std::array<int, 2> new_move, int square) {
+
+    // we need two booleans to denote a collision and whether that is with an
+    // opponent's piece
+    static bool b[2] = {false, false};
 
     // only check if we find a piece on the square
     if (square != 0){
@@ -59,13 +68,11 @@ bool Piece::checkCollision(std::vector<std::array<int, 2>> &moves, std::array<in
             
             // opponent's piece
             if (square > 0) {
-
-                // add capture move 
-                moves.push_back(new_move);
+                b[1] = true;
             }
 
             // we should stop here
-            return true;
+            b[0] = true;
         }
 
         // white player
@@ -73,17 +80,15 @@ bool Piece::checkCollision(std::vector<std::array<int, 2>> &moves, std::array<in
             
             // opponent's piece
             if (square < 0) {
-
-                // add capture move
-                moves.push_back(new_move);
+                b[1] = true;
             }
 
             // we should stop here 
-            return true;
+            b[0] = true;
         }
     }
 
-    return false;
+    return b;
 }
 
 /**

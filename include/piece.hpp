@@ -44,7 +44,7 @@ class Piece {               // The class
     /**
      *  Method to check for collisions
      */
-    bool checkCollision(std::vector<std::array<int, 2>> &moves, std::array<int, 2> new_move, int square);
+    bool * checkCollision(std::array<int, 2> new_move, int square);
 
     /**
      *  Method to check if desired location is out of bounds

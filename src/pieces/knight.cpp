@@ -74,11 +74,22 @@ std::vector<std::array<int, 2>> Knight::getMoves(int board[8][8]) {
         // retrieve the piece that is placed on the square of the new move
         int square = board[new_move[0]][new_move[1]];
 
-        // check for collisions
-        bool collision = this->checkCollision(moves, new_move, square);
+        // create pointer to a boolean that denotes both whether a collision occurred
+        // and whether this is with an opponent's piece or not
+        bool* collision;
+
+        // check for collisions, and whether they arrise with an opponent's piece or not
+        collision = this->checkCollision(new_move, square);
 
         // if we collided we should stop
-        if (collision) { break; }
+        if (collision[0]) { 
+            
+            // if it was with another piece, we need to add the move as a possibility 
+            if (collision[1]) { moves.push_back(new_move); }
+
+            // otherwise we should ignore the rest of this loop
+            continue;
+        }
 
         // if we reach this we can add the move to the total moves
         moves.push_back(new_move);
