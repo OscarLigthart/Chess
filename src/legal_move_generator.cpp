@@ -22,13 +22,20 @@ LegalMoveGenerator::LegalMoveGenerator(Board &board) {
 /**
  *  Generate function
  */
-std::vector<Moves> LegalMoveGenerator::generate(){
+std::vector<Moves> LegalMoveGenerator::generate(std::string turn){
 
     // initialize moves
     std::vector<Moves> moves;
 
+    // convert the string of the turn into the right playervalue
+    int playerTurn = turn == "white" ? -1 : 1;
+
     // loop over all the pieces on the board
     for (int i=0; i<this->board->pieces.size(); i++) {
+
+        if (this->board->pieces[i]->playerValue != playerTurn) {
+            continue;
+        }
         
         // extract the piece name
         Piece* piece = this->board->pieces[i];

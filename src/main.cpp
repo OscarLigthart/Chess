@@ -6,6 +6,7 @@
 #include <interface.hpp>
 #include <vector>
 #include <cmath>
+#include <string>
 
 
 int size = 56; // required for cutting out the pieces 
@@ -28,6 +29,9 @@ int board[8][8] = {
 int main() {
     // Declare and create a new render-window
     sf::RenderWindow window(sf::VideoMode(800, 800), "Chess");
+
+    // start with the turn of the white pieces
+    std::string turn = "white"; 
 
     // initialize the board
     Board board;
