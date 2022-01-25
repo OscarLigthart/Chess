@@ -56,7 +56,7 @@ class Piece {               // The class
     /**
      *  Method to change the position on the board
      */
-    void setPosition(int y, int x);
+    virtual void setPosition(int y, int x);
 
     /**
      *  Method to retrieve the position

@@ -49,6 +49,7 @@ std::vector<Moves> LegalMoveGenerator::generate(){
 
 /**
  *  Method to print all the available moves of the current board configurations
+ *  Mainly used for debugging
  */
 void LegalMoveGenerator::printMoves() {
 
@@ -59,15 +60,11 @@ void LegalMoveGenerator::printMoves() {
     // print the available moves
     for (int i=0; i<moves.size(); i++) {
         
-        // print the piece
-        std::cout << moves[i].piece << "\n";
-
         // extract the move notations
         for (int j=0; j<moves[i].notations.size(); j++) {
 
             // print the notation
             std::cout << moves[i].notations[j] << " ";
-            // std::cout << moves[i].moves[j][0] << " " <<moves[i].moves[j][1] << " ";
         }
         
         // start newline?

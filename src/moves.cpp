@@ -36,11 +36,15 @@ void Moves::generateNotations(){
         // start string with the piece name
         notation += this->piece;
 
+        if (this->piece == "") {
+            std::cout << this->moves[i][0] << " " << this->moves[i][1] << '\n';
+        }
+
         // convert the file first
         notation += static_cast<char>('a' + this->moves[i][1]);
 
         // convert the first (y) into the rank
-        notation += std::to_string(this->moves[i][0] + 1);
+        notation += std::to_string(8 - this->moves[i][0]);
 
         // add this to the notations
         this->notations.push_back(notation);

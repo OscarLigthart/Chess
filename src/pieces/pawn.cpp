@@ -27,7 +27,7 @@ Pawn::Pawn(int player) {
     this->player = player;  
 
     // set playervalue
-    this->playerValue = player == 1 ? 1 : -1;  
+    this->playerValue = player == 1 ? -1 : 1;  
     
     this->notation = "";
 }
@@ -65,7 +65,7 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
 
     // pawns can move two places if they haven't already
     if (!this->has_moved) {
-        directions.push_back(std::array<int,2> {2 * this->playerValue,0});
+        directions.push_back(std::array<int,2> {2 * this->playerValue, 0});
     }
 
     // initialize valid move list
@@ -79,6 +79,12 @@ std::vector<std::array<int, 2>> Pawn::getMoves(int board[8][8]) {
 
         // take current position and add the direction
         std::array<int,2> new_move = {start[0] + directions[i][0], start[1] + directions[i][1]};
+
+        // start by checking for out of bounds
+        bool outOfBounds = this->checkOutOfBounds(new_move[1], new_move[0]);
+
+        // skip this loop if we are out of bounds
+        if (outOfBounds) { continue; }
 
         // retrieve the piece that is placed on the square of the new move
         int square = board[new_move[0]][new_move[1]];
@@ -114,3 +120,23 @@ void Pawn::setSpritePosition(int x, int y) {
     // set the sprite position
     this->sprite.setPosition(x, y); 
 }
+
+void Pawn::setPosition(int y, int x) {
+
+    // check if the new y and x are not on the starting file to determine if this piece has moved
+    int startFile = this->player == 1 ? 6 : 1;
+    if (y == startFile) {
+        this->has_moved = false;
+    }
+    else {
+        this->has_moved = true;
+    }
+
+    // move the piece
+    this->y = y;
+    this->x = x;
+
+    this->position[0] = y;
+    this->position[1] = x;
+}
+

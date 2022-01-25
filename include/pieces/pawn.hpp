@@ -41,6 +41,11 @@ class Pawn: public Piece
      *  Method to update sprite position
      */ 
     void setSpritePosition(int x, int y);
+
+    /**
+     *  Method to update the piece position
+     */
+    void setPosition(int y, int x);
 };
 
 #endif

@@ -82,12 +82,6 @@ std::vector<std::array<int, 2>> Bishop::getMoves(int board[8][8]) {
             // check for collisions, and whether they arrise with an opponent's piece or not
             std::array<bool, 2> collision = this->checkCollision(new_move, square);
 
-            std::cout << "NEWMOVE" << new_move[0] << new_move[1] << "\n";
-
-            std::cout << "BOOLEANS" << collision[0] << collision[1] << "\n";
-
-            std::cout << "SQUARE " << square << "\n";
-
             // if we collided we should stop
             if (collision[0]) { 
                 
