@@ -6,6 +6,7 @@
 #define INTERFACE
 
 #include <board.hpp>
+#include <piece.hpp>
 
 
 class Interface 
@@ -15,7 +16,7 @@ class Interface
     // variables required to run the interface
     bool moving; 
     int square; // the square which is clicked
-    int selectedPiece; // the code of the piece that is selected
+    Piece* selectedPiece; // the code of the piece that is selected
 
     /**
      *  Constructor

@@ -47,7 +47,7 @@ class Board
      *  param y: the clicked rank
      *  param x: the clicked file
      */
-    void process(int square, int selectedPiece, int y, int x);
+    void process(int square, Piece* selectedPiece, int y, int x);
 
     /**
      *  Method to build the pieces to the board
