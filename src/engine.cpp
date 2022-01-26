@@ -62,8 +62,8 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
                     // make the move for the piece
                     selectedPiece->move(y, x);
 
-                    std::cout << "PRINTING FUNCTION" << "\n";
-                    this->board->print();
+                    // set the other turn
+                    this->turn = !turn;
 
                     // stop here
                     return;
