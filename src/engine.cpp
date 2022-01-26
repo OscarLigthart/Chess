@@ -12,7 +12,7 @@
 #include <board.hpp>
 #include <legal_move_generator.hpp>
 
-Engine::Engine(Board &board) {
+Engine::Engine(Board* board) {
     
     // inherit the board
     this->board = board;
@@ -29,28 +29,7 @@ Engine::Engine(Board &board) {
  */
 void Engine::process(int y, int x) {
 
-    // do something if there is a piece there
-    // find out which piece it is as well
-    this->square = this->board.board[y][x];
+    // check the turn
 
-    // check which piece is placed there
-    for (int i=0; i<32; i++) {
-        if (board.pieces[i]->getPosition()[0] == y && board.pieces[i]->getPosition()[1] == x) {
-            this->selectedPiece = board.pieces[i];
-
-            // insert this piece at the start and remove it from the list
-            board.pieces.push_back(board.pieces[i]);
-            board.pieces.erase(board.pieces.begin() + i);
-            
-            break;
-        }
-    };
-
-    for (int i=0; i<32; i++) std::cout << board.pieces[i]->notation << ' ';
-
-    // indicate we start moving, if we have a piece on the square
-    if (this->square) 
-    {
-        this->moving = !this->moving;    
-    }
+    // the interface needs the turn
 }

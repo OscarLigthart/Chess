@@ -43,8 +43,8 @@ int main() {
     // initialize the interface
     Interface interface;
 
-    // initialize the legal move generator
-    LegalMoveGenerator lmg = LegalMoveGenerator(board);
+    // initialize the game engine
+    Engine engine = Engine(board);
 
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
@@ -70,23 +70,20 @@ int main() {
                     int x = float(pos.x)/800 * 8;
                     int y = float(pos.y)/800 * 8;
 
-                    // let the engine process the clicked square
-                    engine.process(y, x);
+                    // if we're not already moving a piece we should process the input
+                    // to determine which piece is clicked
+                    if (!interface.moving) {
+                        interface.processInput(board, x, y);
+                    }
+                    // if we are moving then this click means we're putting a piece somewhere
+                    else {
 
-                    // // if we're not already moving a piece we should process the input
-                    // // to determine which piece is clicked
-                    // if (!interface.moving) {
-                    //     interface.processInput(board, x, y);
-                    // }
-                    // // if we are moving then this click means we're putting a piece somewhere
-                    // else {
+                        // update the board
+                        engine.process(y, x);
 
-                    //     // update the board
-                    //     board.process(interface.square, interface.selectedPiece, y, x);
-
-                    //     // reset the interface so we can process the next click
-                    //     interface.reset();
-                    // }
+                        // reset the interface so we can process the next click
+                        interface.reset();
+                    }
 
                 }
 

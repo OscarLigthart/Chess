@@ -14,7 +14,7 @@ class Engine
   {
     public:
     Board* board;
-    LegalMoveGenerator* lgm;
+    LegalMoveGenerator lgm;
     int turn; // the engine will keep track of which turn it is
 
     Piece* selectedPiece; // the code of the piece that is selected and therefore needs to be moved
