@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */ 
-Pawn::Pawn(int player) {
+Pawn::Pawn(int player, int id) {
 
     // let the world know we're creating a pawn
     std::cout << "Creating Pawn\n";
@@ -25,6 +25,7 @@ Pawn::Pawn(int player) {
 
     // set player
     this->player = player;  
+    this->id = id;
 
     // set playervalue
     this->playerValue = player == 1 ? -1 : 1;  

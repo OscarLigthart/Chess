@@ -38,7 +38,7 @@ Board::Board( ){
 void Board::buildPieces( ){
 
     // loop over entire board
-    int k=0;
+    int k=0; // id tracker
     for (int i=0;i<8;i++)
       for (int j=0;j<8;j++)
         {
@@ -56,32 +56,32 @@ void Board::buildPieces( ){
             switch(pieceId) {
                 case 0:
                     {
-                        piece = new Rook(player);
+                        piece = new Rook(player, k);
                         break;
                     }
                 case 1: 
                     {
-                        piece = new Knight(player);
+                        piece = new Knight(player, k);
                         break;
                     }
                 case 2:
                     { 
-                        piece = new Bishop(player);
+                        piece = new Bishop(player, k);
                         break;
                     }
                 case 3: 
                     {
-                        piece = new Queen(player);
+                        piece = new Queen(player, k);
                         break;
                     }
                 case 4: 
                     {   
-                        piece = new King(player);
+                        piece = new King(player, k);
                         break;
                     }
                 case 5: 
                     {
-                        piece = new Pawn(player);
+                        piece = new Pawn(player, k);
                         break;
                     }
             }
@@ -92,6 +92,9 @@ void Board::buildPieces( ){
 
             // add to vector
             this->pieces.push_back(piece);
+
+            // add to k
+            k++;
         }
 }
 

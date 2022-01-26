@@ -10,6 +10,7 @@
 #include <engine.hpp>
 #include <interface.hpp>
 #include <board.hpp>
+#include <moves.hpp>
 #include <legal_move_generator.hpp>
 
 Engine::Engine(Board &board) {
@@ -27,9 +28,16 @@ Engine::Engine(Board &board) {
  *  @param y the clicked rank of the board
  *  @param x the clicked file of the board
  */
-void Engine::process(int y, int x) {
+void Engine::process(Piece* selectedPiece, int y, int x) {
 
     // check the turn
+    std::vector<Moves> moves = this->lgm->generate(this->turn);
 
-    // the interface needs the turn
+    // the requested move should be in the valid moves
+    for (int i=0; i<moves.size(); i++) {
+        
+        // print the moves
+        // todo need to have a better ID for every piece
+        continue;
+    }
 }

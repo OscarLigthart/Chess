@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */
-Knight::Knight(int player) {
+Knight::Knight(int player, int id) {
     
     // let the world know we're creating a knight
     std::cout << "Creating Knight\n";
@@ -24,6 +24,7 @@ Knight::Knight(int player) {
     this->sprite.setScale(1.8f, 1.65f);
 
     this->player = player;
+    this->id = id;
     this->notation = "N";   
 }
 

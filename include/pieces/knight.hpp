@@ -12,13 +12,14 @@ class Knight: public Piece
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
+    using Piece::id;
     using Piece::player;
     using Piece::notation;
 
     /**
      *  Constructor
      */
-    Knight (int player);
+    Knight (int player, int id);
 
     /**
      *  Method to check if move is valid

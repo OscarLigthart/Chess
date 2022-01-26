@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */
-King::King(int player) {
+King::King(int player, int id) {
 
     // let the world know we're creating a king
     std::cout << "Creating King\n";
@@ -23,6 +23,7 @@ King::King(int player) {
     this->sprite.setScale(1.8f, 1.65f);
 
     this->player = player;
+    this->id = id;
     this->notation = "K";
 }
 

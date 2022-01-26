@@ -12,10 +12,11 @@
 /**
  *  Constructor
  */
-Moves::Moves(std::string piece, std::vector<std::array<int, 2>> moves) {
+Moves::Moves(std::string piece, int pieceId, std::vector<std::array<int, 2>> moves) {
 
     // save the incoming variables
     this->piece = piece;
+    this->pieceId = pieceId;
     this->moves = moves;
 
     // generate the human readable moves

@@ -78,8 +78,9 @@ int main() {
                     // if we are moving then this click means we're putting a piece somewhere
                     else {
 
-                        // update the board
-                        engine.process(y, x);
+                        // let the engine process the requested move 
+                        // this is where the magic happens, the move is checked and if it's valid it's performed
+                        engine.process(interface.selectedPiece, y, x);
 
                         // reset the interface so we can process the next click
                         interface.reset();

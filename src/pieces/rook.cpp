@@ -5,7 +5,7 @@
 #include <iostream>
 #include <pieces/rook.hpp>
 
-Rook::Rook(int player) {
+Rook::Rook(int player, int id) {
 
     // let the world know that a rook has been created
     std::cout << "Creating Rook\n";
@@ -21,6 +21,7 @@ Rook::Rook(int player) {
     this->sprite.setScale(1.8f, 1.65f);  
 
     this->player = player;
+    this->id = id;
     this->notation = "R";
 }
 

@@ -9,7 +9,7 @@
 #include <array>
 
 
-Bishop::Bishop(int player) {
+Bishop::Bishop(int player, int id) {
 
     // let the world know we're creating a bishop
     std::cout << "Creating Bishop\n";
@@ -25,6 +25,8 @@ Bishop::Bishop(int player) {
 
     // set the player var
     this->player = player;
+    this->id = id;
+
     this->notation = "B";
     
 }

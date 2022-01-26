@@ -12,6 +12,7 @@ class Pawn: public Piece
 {           // The class
   public:               // Access specifier
     sf::Sprite sprite;  // the sprite for the piece
+    using Piece::id;
     using Piece::player;
     using Piece::notation;
     int playerValue; // the player value translated to -1 and 1
@@ -20,7 +21,7 @@ class Pawn: public Piece
     /**
      *  Constructor
      */
-    Pawn (int player);
+    Pawn (int player, int id);
 
     /**
      *  Method to check if move is valid

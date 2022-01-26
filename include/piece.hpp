@@ -16,6 +16,7 @@ class Piece {               // The class
     int size = 56;          // required for cutting out the pieces 
     int piece_size = 100;   // 800/8
     int player;
+    int id;                 // the ID of the piece
     std::string notation;
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece

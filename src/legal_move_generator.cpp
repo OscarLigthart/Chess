@@ -44,7 +44,7 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         piece_moves = piece->getMoves(this->board->board);
 
         // convert to move class
-        Moves move = Moves(piece->notation, piece_moves);
+        Moves move = Moves(piece->notation, piece->id, piece_moves);
 
         // add this move to all the moves
         moves.push_back(move);

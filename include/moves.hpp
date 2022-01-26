@@ -16,6 +16,7 @@ class Moves
     public:
 
     // inner variables
+    int pieceId;
     std::string piece;
     std::vector<std::array<int, 2>> moves;
     std::vector<std::string> notations; // human readable chess move notations
@@ -23,7 +24,7 @@ class Moves
     /**
      *  Constructor
      */    
-    Moves(std::string piece, std::vector<std::array<int, 2>> moves);
+    Moves(std::string piece, int pieceId, std::vector<std::array<int, 2>> moves);
     
     /**
      *  Method to convert the moves into human readable notations
