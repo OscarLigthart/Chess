@@ -27,8 +27,6 @@ void Interface::processInput(Board &board, int x, int y) {
     // find out which piece it is as well
     this->square = board.board[y][x];
 
-    for (int i=0; i<32; i++) std::cout << board.pieces[i]->notation << ' ';
-
     // check which piece is placed there
     for (int i=0; i<32; i++) {
         if (board.pieces[i]->getPosition()[0] == y && board.pieces[i]->getPosition()[1] == x) {
@@ -41,8 +39,6 @@ void Interface::processInput(Board &board, int x, int y) {
             break;
         }
     };
-
-    for (int i=0; i<32; i++) std::cout << board.pieces[i]->notation << ' ';
 
     // indicate we start moving, if we have a piece on the square
     if (this->square) 
