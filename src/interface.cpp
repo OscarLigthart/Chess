@@ -23,7 +23,7 @@ Interface::Interface() {
  *  @param y (int) depicting which rank is clicked
  *  @param turn (int) depicting which player's move it is
 */
-void Interface::processInput(Board &board, int x, int y) {
+void Interface::processInput(Board &board, int x, int y, int turn) {
 
     // do something if there is a piece there
     // find out which piece it is as well
@@ -32,6 +32,11 @@ void Interface::processInput(Board &board, int x, int y) {
     // check which piece is placed there
     for (int i=0; i<32; i++) {
         if (board.pieces[i]->getPosition()[0] == y && board.pieces[i]->getPosition()[1] == x) {
+
+            // if this is not the right turn, we should just stop and do nothing
+            if (board.pieces[i]->player != turn) return;
+            
+            // save the piece
             this->selectedPiece = board.pieces[i];
 
             // insert this piece at the start and remove it from the list
