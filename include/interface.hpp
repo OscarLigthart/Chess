@@ -25,10 +25,12 @@ class Interface
 
     /**
      *  Method to process the input
-     *  param x: integer depicting which file is clicked
-     *  param y: integer depicting which rank is clicked
+     *  @param board (Board) board object 
+     *  @param x (int) depicting which file is clicked
+     *  @param y (int) depicting which rank is clicked
+     *  @param turn (int) depicting which player's move it is
      */
-    void processInput(Board &board, int x, int y);
+    void processInput(Board &board, int x, int y, int turn);
 
     /**
      *  Method to reset the interface and make it ready for next command

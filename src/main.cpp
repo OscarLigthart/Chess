@@ -73,7 +73,7 @@ int main() {
                     // if we're not already moving a piece we should process the input
                     // to determine which piece is clicked
                     if (!interface.moving) {
-                        interface.processInput(board, x, y);
+                        interface.processInput(board, x, y, engine.turn);
                     }
                     // if we are moving then this click means we're putting a piece somewhere
                     else {

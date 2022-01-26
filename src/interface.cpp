@@ -17,10 +17,12 @@ Interface::Interface() {
 }
 
 /**
- *  Method to process the mouse input
- *  param x: integer depicting which file is clicked
- *  param y: integer depicting which rank is clicked
- */
+ *  Method to process the input
+ *  @param board (Board) board object 
+ *  @param x (int) depicting which file is clicked
+ *  @param y (int) depicting which rank is clicked
+ *  @param turn (int) depicting which player's move it is
+*/
 void Interface::processInput(Board &board, int x, int y) {
 
     // do something if there is a piece there
