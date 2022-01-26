@@ -46,7 +46,7 @@ void Interface::processInput(Board &board, int x, int y, int turn) {
             break;
         }
     };
-
+    
     // indicate we start moving, if we have a piece on the square
     if (this->square) 
     {

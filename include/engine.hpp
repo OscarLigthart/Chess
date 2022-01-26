@@ -15,7 +15,7 @@ class Engine
     public:
     Board* board;
     LegalMoveGenerator* lgm;
-    int turn; // the engine will keep track of which turn it is
+    int turn = 1; // 1 for white and 0 for black
 
     Piece* selectedPiece; // the code of the piece that is selected and therefore needs to be moved
     bool moving; // determine whether we are currently moving a piece

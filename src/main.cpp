@@ -89,7 +89,7 @@ int main() {
 
             // place it on top of the mouse if we're in moving state
             if (interface.moving) {
-                engine.selectedPiece->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
+                interface.selectedPiece->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
             }
         }
 
