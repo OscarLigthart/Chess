@@ -20,15 +20,14 @@ LegalMoveGenerator::LegalMoveGenerator(Board &board) {
 }
 
 /**
- *  Generate function
+ *  Method to generate all possible moves given a board configuration
+ *  for the white or black player
+ *  @param turn (int) 0 for black's turn and 1 for white's turn
  */
-std::vector<Moves> LegalMoveGenerator::generate(std::string turn){
+std::vector<Moves> LegalMoveGenerator::generate(int turn){
 
     // initialize moves
     std::vector<Moves> moves;
-
-    // convert the string of the turn into the right playervalue
-    int playerTurn = turn == "white" ? -1 : 1;
 
     // loop over all the pieces on the board
     for (int i=0; i<this->board->pieces.size(); i++) {
@@ -58,7 +57,7 @@ std::vector<Moves> LegalMoveGenerator::generate(std::string turn){
  *  Method to print all the available moves of the current board configurations
  *  Mainly used for debugging
  */
-void LegalMoveGenerator::printMoves() {
+void LegalMoveGenerator::printMoves(int turn) {
 
     // generate the moves
     std::vector<Moves> moves;

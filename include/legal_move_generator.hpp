@@ -23,14 +23,16 @@ class LegalMoveGenerator
     /**
      *  Method to generate all possible moves given a board configuration
      *  for the white or black player
-     *  @param turn (string) white | black player's turn
+     *  @param turn (int) 0 for black's turn and 1 for white's turn
      */
-    std::vector<Moves> generate(std::string turn);
+    std::vector<Moves> generate(int turn);
 
-    /** 
-     *  Method to pretty print all available move notations given a board configurations
+    /**
+     *  Method to print all the available moves of the current board configurations
+     *  Mainly used for debugging
+     *  @param turn (int) 0 for black's turn and 1 for white's turn
      */
-    void printMoves();    
+    void printMoves(int turn);    
 };
 
 #endif
