@@ -31,7 +31,7 @@ class Piece {               // The class
      *  Inherently changes the position of the piece and returns a boolean
      *  denoting whether the move is valid
      */
-    bool move(int y, int x);
+    void move(int y, int x);
 
     /**
      *  Method to check if move is valid

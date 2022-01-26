@@ -17,17 +17,7 @@ Piece::Piece() {
     figures.loadFromFile("../img/pieces.png");
 }
 
-bool Piece::move(int y, int x) {
-
-    if (!this->isValidMove(y, x)) { 
-
-        // move to old position
-        this->setSpritePosition(this->piece_size * this->x, this->piece_size * this->y);
-        this->setPosition(this->y, this->x);
-
-        // stop here
-        return false; 
-    }
+void Piece::move(int y, int x) {
 
     // change the position of the piece
     this->setSpritePosition(this->piece_size * x, this->piece_size * y);

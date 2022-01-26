@@ -11,6 +11,7 @@
 #include <interface.hpp>
 #include <board.hpp>
 #include <moves.hpp>
+#include <iostream>
 #include <legal_move_generator.hpp>
 
 Engine::Engine(Board &board) {
@@ -30,6 +31,9 @@ Engine::Engine(Board &board) {
  */
 void Engine::process(Piece* selectedPiece, int y, int x) {
 
+    // get the square on the board the piece was originally at
+    int square = this->board->board[selectedPiece->y][selectedPiece->x];
+    
     // check the turn
     std::vector<Moves> moves = this->lgm->generate(this->turn);
 
@@ -38,6 +42,30 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
         
         // print the moves
         // todo need to have a better ID for every piece
-        continue;
+        if (moves[i].pieceId == selectedPiece->id) {
+            
+            // check if any of the moves is valid
+            for (int j=0; j<moves[i].moves.size(); j++) {
+
+                if (moves[i].moves[j][0] == y && moves[i].moves[j][1] == x){
+                    
+                    // here we should actually make the move
+                    // update the board with the piece position
+                    this->board->board[y][x] = square;
+
+                    // check for capture here
+                    // need to call remove on the captured piece
+
+                    // make the move for the piece
+                    selectedPiece->move(y, x);
+
+                    // stop here
+                    return;
+                }
+            }
+        }
     }
+
+    // if we made it this far we have to move the piece back, as it was no legal move
+    selectedPiece->move(selectedPiece->y, selectedPiece->x);
 }
