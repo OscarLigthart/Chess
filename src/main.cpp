@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <board.hpp>
+#include <engine.hpp>
 #include <legal_move_generator.hpp>
 #include <interface.hpp>
 #include <vector>
 #include <cmath>
-#include <string>
+
 
 
 int size = 56; // required for cutting out the pieces 
@@ -29,9 +30,6 @@ int board[8][8] = {
 int main() {
     // Declare and create a new render-window
     sf::RenderWindow window(sf::VideoMode(800, 800), "Chess");
-
-    // start with the turn of the white pieces
-    std::string turn = "white"; 
 
     // initialize the board
     Board board;
@@ -72,29 +70,29 @@ int main() {
                     int x = float(pos.x)/800 * 8;
                     int y = float(pos.y)/800 * 8;
 
-                    // REMOVE AFTER
-                    lmg.printMoves();
+                    // let the engine process the clicked square
+                    engine.process(y, x);
 
-                    // if we're not already moving a piece we should process the input
-                    // to determine which piece is clicked
-                    if (!interface.moving) {
-                        interface.processInput(board, x, y);
-                    }
-                    // if we are moving then this click means we're putting a piece somewhere
-                    else {
+                    // // if we're not already moving a piece we should process the input
+                    // // to determine which piece is clicked
+                    // if (!interface.moving) {
+                    //     interface.processInput(board, x, y);
+                    // }
+                    // // if we are moving then this click means we're putting a piece somewhere
+                    // else {
 
-                        // update the board
-                        board.process(interface.square, interface.selectedPiece, y, x);
+                    //     // update the board
+                    //     board.process(interface.square, interface.selectedPiece, y, x);
 
-                        // reset the interface so we can process the next click
-                        interface.reset();
-                    }
+                    //     // reset the interface so we can process the next click
+                    //     interface.reset();
+                    // }
 
                 }
 
             // place it on top of the mouse if we're in moving state
             if (interface.moving) {
-                interface.selectedPiece->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
+                engine.selectedPiece->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
             }
         }
 
