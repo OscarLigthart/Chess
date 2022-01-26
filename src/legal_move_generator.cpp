@@ -32,7 +32,7 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
     // loop over all the pieces on the board
     for (int i=0; i<this->board->pieces.size(); i++) {
 
-        if (this->board->pieces[i]->playerValue != playerTurn) {
+        if (this->board->pieces[i]->player != turn) {
             continue;
         }
         
@@ -56,12 +56,13 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
 /**
  *  Method to print all the available moves of the current board configurations
  *  Mainly used for debugging
+ *  @param turn (int) 0 for black's turn and 1 for white's turn
  */
 void LegalMoveGenerator::printMoves(int turn) {
 
     // generate the moves
     std::vector<Moves> moves;
-    moves = this->generate();
+    moves = this->generate(turn);
 
     // print the available moves
     for (int i=0; i<moves.size(); i++) {

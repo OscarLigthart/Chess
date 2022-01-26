@@ -12,13 +12,13 @@
 #include <board.hpp>
 #include <legal_move_generator.hpp>
 
-Engine::Engine(Board* board) {
+Engine::Engine(Board &board) {
     
     // inherit the board
-    this->board = board;
+    this->board = &board;
 
     // initialize the legal move generator
-    this->lgm = LegalMoveGenerator(board);
+    this->lgm = new LegalMoveGenerator(board);
 
 }
 
