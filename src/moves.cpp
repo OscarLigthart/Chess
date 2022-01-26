@@ -36,10 +36,6 @@ void Moves::generateNotations(){
         // start string with the piece name
         notation += this->piece;
 
-        if (this->piece == "") {
-            std::cout << this->moves[i][0] << " " << this->moves[i][1] << '\n';
-        }
-
         // convert the file first
         notation += static_cast<char>('a' + this->moves[i][1]);
 
