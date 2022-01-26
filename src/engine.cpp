@@ -53,11 +53,17 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
                     // update the board with the piece position
                     this->board->board[y][x] = square;
 
+                    // old square should be zero, as there will no longer be a piece
+                    this->board->board[selectedPiece->y][selectedPiece->x] = 0;
+
                     // check for capture here
                     // need to call remove on the captured piece
 
                     // make the move for the piece
                     selectedPiece->move(y, x);
+
+                    std::cout << "PRINTING FUNCTION" << "\n";
+                    this->board->print();
 
                     // stop here
                     return;

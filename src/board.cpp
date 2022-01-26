@@ -29,7 +29,7 @@ Board::Board( ){
     }
 
     // build the pieces on initialization
-    buildPieces();
+    this->buildPieces();
 }
 
 /**
@@ -119,4 +119,20 @@ void Board::process(int square, Piece* selectedPiece, int y, int x) {
     // checks
     // checkmate
     // etc etc
+}
+
+/**
+ *  Method to print the board
+ */
+void Board::print() {
+
+    std::cout << "PRINTING BOARD" << "\n";
+    for (int i=0;i<8;i++)
+    {
+        for (int j=0;j<8;j++)
+        {
+            std::cout << this->board[i][j] << " ";
+        }
+        std::cout << "\n";
+    }        
 }

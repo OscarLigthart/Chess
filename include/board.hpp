@@ -59,6 +59,11 @@ class Board
      *  Requests a clicked piece as input argument
      */
     void getValidMoves();
+
+    /**
+     *  Method to print the board
+     */ 
+    void print();
 };
 
 #endif
