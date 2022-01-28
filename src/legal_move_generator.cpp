@@ -27,7 +27,7 @@ LegalMoveGenerator::LegalMoveGenerator(Board &board) {
 std::vector<Moves> LegalMoveGenerator::generate(int turn){
 
     // initialize moves
-    std::vector<Moves> moves;
+    std::vector<Moves> allMoves;
 
     // loop over all the pieces on the board
     for (int i=0; i<this->board->pieces.size(); i++) {
@@ -40,24 +40,71 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         // extract the piece name
         Piece* piece = this->board->pieces[i];
 
-        // generate the moves
-        std::vector<std::array<int, 2>> piece_moves;
-        piece_moves = piece->getMoves(this->board->board);
+        // generate the move coordinates that the piece can go to
+        std::vector<std::array<int, 2>> pieceMoveSuggestions;
+        pieceMoveSuggestions = piece->getMoves(this->board->board);
 
-        // check for capture
-        // need to see where the moves end up
-        // then find which piece is on that square, if any
-        // then add that piece as object to this move
+        // convert these pieces into Move structs, which hold both
+        // the square to which the move wants to go as well as a potential piece to be captured
+        std::vector<Move> pieceMoves = this->convertToMove(pieceMoveSuggestions); 
 
-        // convert to move class
-        Moves move = Moves(piece->notation, piece->id, piece_moves);
+        // create a moves class for the piece holding all legal moves in there
+        Moves moves = Moves(piece->notation, piece->id, pieceMoves);     
 
         // add this move to all the moves
-        moves.push_back(move);
+        allMoves.push_back(moves);
     } 
 
-    return moves;
+    // next is to perform the moves into pseudo boards and check whether
+    // the king will be in check or not
+
+    return allMoves;
 }
+
+std::vector<Move> LegalMoveGenerator::convertToMove(std::vector<std::array<int,2>> pieceMoveSuggestions) {
+
+    // initialize a move vector
+    std::vector<Move> pieceMoves;
+
+    // loop over the move suggestions
+    for (int i=0; i<pieceMoveSuggestions.size(); i++) {
+        
+        // extract coordinates
+        int y = pieceMoveSuggestions[i][0];
+        int x = pieceMoveSuggestions[i][1];
+
+        // get the square on the board
+        int square = this->board->board[y][x];
+
+        // initialize a move struct here
+        Move move = { .square = pieceMoveSuggestions[i]};
+
+        // check if this will capture a piece
+        if (square != 0) {
+
+            // if so, we need to find out which piece this is and add it to the move struct
+            for (int j=0; j<this->board->pieces.size(); j++) {
+                
+                // extract piece
+                Piece* p = this->board->pieces[j];
+
+                // check if piece is on square location
+                if (p->y == y && p->x == x) {
+
+                    // if so we need to add it to the move struct
+                    move.capturedPiece = p;
+                }
+            }         
+
+        }
+
+        // add the move to the struct
+        pieceMoves.push_back(move);
+    }
+
+    // return the suggested piece moves
+    return pieceMoves;
+};
 
 /**
  *  Method to print all the available moves of the current board configurations

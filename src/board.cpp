@@ -99,6 +99,26 @@ void Board::buildPieces( ){
 }
 
 /**
+ *  Method to remove a captured piece from the board
+ */
+void Board::removePiece(Piece* p){
+    
+    // delete the piece object
+    delete p;
+
+    // index of piece to be removed
+    int index;
+
+    // find index of piece in list
+    for (int i=0; i<this->pieces.size(); i++) {
+        if (p->id == this->pieces[i]->id) index = i;
+    }
+
+    // remove it from the list
+    this->pieces.erase(this->pieces.begin() + index);
+}
+
+/**
  *  Method to print the board
  */
 void Board::print() {
