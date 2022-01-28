@@ -99,29 +99,6 @@ void Board::buildPieces( ){
 }
 
 /**
- *  Method to process the user input to the board
- *  param square: the clicked square
- *  param selectedPiece: the code of the selected piece 
- *  param y: the clicked rank
- *  param x: the clicked file
- */
-void Board::process(int square, Piece* selectedPiece, int y, int x) {
-
-    // update the board
-    this->board[y][x] = square;
-
-    // todo, maybe check legal moves here already?
-
-    // move the piece to the center of the square
-    selectedPiece->move(y, x);
-
-    // check gamestate here
-    // checks
-    // checkmate
-    // etc etc
-}
-
-/**
  *  Method to print the board
  */
 void Board::print() {

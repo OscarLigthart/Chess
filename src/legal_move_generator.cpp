@@ -31,7 +31,8 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
 
     // loop over all the pieces on the board
     for (int i=0; i<this->board->pieces.size(); i++) {
-
+        
+        // only generate moves for pieces that belong to the side who's turn it is
         if (this->board->pieces[i]->player != turn) {
             continue;
         }
@@ -42,6 +43,11 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         // generate the moves
         std::vector<std::array<int, 2>> piece_moves;
         piece_moves = piece->getMoves(this->board->board);
+
+        // check for capture
+        // need to see where the moves end up
+        // then find which piece is on that square, if any
+        // then add that piece as object to this move
 
         // convert to move class
         Moves move = Moves(piece->notation, piece->id, piece_moves);

@@ -11,6 +11,9 @@
 #include <array>
 
 
+/** 
+ *  Class depicting the full set of moves for a given piece
+ */
 class Moves 
   {
     public:
@@ -20,6 +23,7 @@ class Moves
     std::string piece;
     std::vector<std::array<int, 2>> moves;
     std::vector<std::string> notations; // human readable chess move notations
+    
 
     /**
      *  Constructor
@@ -31,5 +35,13 @@ class Moves
      */
     void generateNotations();
 };
+
+/**
+ *  Class depicting a single move of a single piece
+ */
+class Move
+  {
+    public:
+  }
 
 #endif
