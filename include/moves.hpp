@@ -19,7 +19,7 @@ struct Move
     public:
 
     std::array<int,2> square; // the square to which the piece wants to go
-    Piece* capturedPiece; // a potentially captured piece on the goal square
+    Piece* capturedPiece = NULL; // a potentially captured piece on the goal square
   };
 
 /** 

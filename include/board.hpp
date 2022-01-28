@@ -46,10 +46,10 @@ class Board
     void buildPieces();
 
     /**
-     *  Method to find if a requested move is a valid move
-     *  Requests a clicked piece as input argument
+     *  Method to remove a piece from the board
+     *  @param p (Piece) the piece object to be removed from the board
      */
-    void getValidMoves();
+    void removePiece(Piece* p);
 
     /**
      *  Method to print the board

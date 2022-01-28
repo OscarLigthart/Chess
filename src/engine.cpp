@@ -47,7 +47,10 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
             // check if any of the moves is valid
             for (int j=0; j<moves[i].moves.size(); j++) {
 
-                if (moves[i].moves[j].square[0] == y && moves[i].moves[j].square[1] == x){
+                // extract the move
+                Move move = moves[i].moves[j];
+
+                if (move.square[0] == y && move.square[1] == x){
                     
                     // here we should actually make the move
                     // update the board with the piece position
@@ -58,6 +61,9 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
 
                     // check for capture here
                     // need to call remove on the captured piece
+                    if (move.capturedPiece != NULL) {
+                        this->board->removePiece(move.capturedPiece);
+                    }
 
                     // make the move for the piece
                     selectedPiece->move(y, x);
