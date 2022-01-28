@@ -10,9 +10,9 @@
 #include <iostream>
 
 /**
- *  Constructor
+ *  Moves Constructor
  */
-Moves::Moves(std::string piece, int pieceId, std::vector<std::array<int, 2>> moves) {
+Moves::Moves(std::string piece, int pieceId, std::vector<Move> moves) {
 
     // save the incoming variables
     this->piece = piece;
@@ -38,10 +38,10 @@ void Moves::generateNotations(){
         notation += this->piece;
 
         // convert the file first
-        notation += static_cast<char>('a' + this->moves[i][1]);
+        notation += static_cast<char>('a' + this->moves[i].square[1]);
 
         // convert the first (y) into the rank
-        notation += std::to_string(8 - this->moves[i][0]);
+        notation += std::to_string(8 - this->moves[i].square[0]);
 
         // add this to the notations
         this->notations.push_back(notation);

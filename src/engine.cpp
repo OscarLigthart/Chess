@@ -47,7 +47,7 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
             // check if any of the moves is valid
             for (int j=0; j<moves[i].moves.size(); j++) {
 
-                if (moves[i].moves[j][0] == y && moves[i].moves[j][1] == x){
+                if (moves[i].moves[j].square[0] == y && moves[i].moves[j].square[1] == x){
                     
                     // here we should actually make the move
                     // update the board with the piece position

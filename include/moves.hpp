@@ -37,11 +37,14 @@ class Moves
 };
 
 /**
- *  Class depicting a single move of a single piece
+ *  Struct depicting a single move of a single piece
  */
-class Move
+struct Move
   {
     public:
+
+    std::array<int,2> square; // the square to which the piece wants to go
+    Piece* capturedPiece; // a potentially captured piece on the goal square
   }
 
 #endif
