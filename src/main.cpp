@@ -99,7 +99,7 @@ int main() {
         
         // Draw some graphical entities
         window.draw(board.boardSprite);
-        for (int i=0; i<32; i++) window.draw(board.pieces[i]->getSprite());
+        for (int i=0; i<board.pieces.size(); i++) window.draw(board.pieces[i]->getSprite());
 
         // End the current frame and display its contents on screen
         window.display();
