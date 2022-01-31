@@ -69,6 +69,9 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         
     }
 
+    // check for castling
+    std::vector<Moves> castleMoves = this->checkCastling(turn);
+
     return validMoves;
 }
 
@@ -194,6 +197,50 @@ bool LegalMoveGenerator::lookForChecks(int turn) {
 
     // if we reach this we found no checks
     return false;
+}
+
+/**
+ *  Method that checks if the player has castling rights given a certain
+ *  board configuration
+ *  @param turn (int) the player's turn
+ */
+std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
+
+    // initialize Moves object 
+    std::vector<Moves> moves;
+
+    // extract the pieces?
+    Piece* king;
+    Piece* r1;
+    Piece* r2;
+
+    // get the king of the player who's turn it is
+    for (int i=0; i<this->board->pieces.size(); i++) {
+        
+        // only generate moves for pieces that belong to the side who's turn it is
+        if (this->board->pieces[i]->player != turn) {
+            continue;
+        }
+
+        if (this->board->pieces[i]->notation != "K") {
+            king = this->board->pieces[i];
+        } else if (this->board->pieces[i]->notation != "R") {
+            // r1 = this->board->pieces[i];
+            r1 r2
+        }
+
+        // here we have the king
+
+        // do we need the rook?
+
+        // 
+    }
+        
+
+
+    // create a moves class for the piece holding all legal moves in there
+    Moves moves = Moves(piece->notation, piece->id, pieceMoves);     
+
 }
 
 /**

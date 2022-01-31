@@ -50,6 +50,13 @@ class LegalMoveGenerator
     bool lookForChecks(int turn);
 
     /**
+     *  Method that checks if the player has castling rights given a certain
+     *  board configuration
+     *  @param turn (int) the player's turn
+     */ 
+    std::vector<Move> checkCastling(int turn);
+
+    /**
      *  Method to print all the available moves of the current board configurations
      *  Mainly used for debugging
      *  @param turn (int) 0 for black's turn and 1 for white's turn
