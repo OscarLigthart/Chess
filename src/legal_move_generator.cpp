@@ -26,26 +26,48 @@ LegalMoveGenerator::LegalMoveGenerator(Board &board) {
  */
 std::vector<Moves> LegalMoveGenerator::generate(int turn){
 
+    // initialize a valid move vector
+    std::vector<Moves> validMoves;
+
     // start by generating all the piece moves for this player's turn
-    std::vector<Moves> allMoves = LegalMoveGenerator::generateAllPieceMoves(turn);
+    std::vector<Moves> allPieceMoves = LegalMoveGenerator::generateAllPieceMoves(turn);
 
-    // next we need to run the moves in a pseudo configuration
+    // loop over all of the moves
+    for (int i=0; i<allPieceMoves.size(); i++) {
 
-    // copy the board
+        // extract moves for a single piece
+        Moves pieceMoves = allPieceMoves[i];
 
-    // loop over moves
+        // copy the Moves vector but clear the valid moves
+        Moves validPieceMoves = pieceMoves;
+        validPieceMoves.moves = {};
 
-    // make move
+        // loop over the moves from this piece
+        for (int j=0; j<pieceMoves.moves.size(); j++) {
+            
+            // extract a single move
+            Move move = pieceMoves.moves[j];
 
-    // generate all moves for pieces (own player only)
+            // make the move
+            this->board->move(move);
 
-    // loop over all of these moves and check if the king is among the capturedPieces
+            // here we need to check all the moves again and see if the king is in check
+            // FOR THIS WE NEED TO GENERATE ALL THE MOVES OF THE !!OTHER!! PLAYER
+            bool check = this->lookForChecks(turn);
 
-    // if not the move is valid, if yes the move is invalid
+            if (!check) {
+                validPieceMoves.moves.push_back(move);
+            }
 
+            // undo the move
+            this->board->undo(move);
+        }
 
+        // add the valid moves
+        validMoves.push_back(validPieceMoves);
+    }
 
-    return allMoves;
+    return validMoves;
 }
 
 /**
@@ -108,6 +130,7 @@ std::vector<Move> LegalMoveGenerator::generateSinglePieceMoves(Piece* piece) {
         // initialize a move struct here
         Move move = { 
             .piece = piece,
+            .start = {piece->y, piece->x},
             .square = pieceMoveSuggestions[i],
         };
 
@@ -136,6 +159,24 @@ std::vector<Move> LegalMoveGenerator::generateSinglePieceMoves(Piece* piece) {
     // return the suggested piece moves
     return pieceMoves;
 };
+
+/**
+ *  Method to look for checks given a certain board configuration
+ *  !! IMPORTANT !! This function will only be called on pseudoboards
+ *  @param turn (int) the player's turn
+ */
+bool LegalMoveGenerator::lookForChecks(int turn) {
+
+    // we have to generate all possible piece moves
+
+    // loop over them
+
+    // look for checks
+
+
+    // if we reach this we found no checks
+    return false;
+}
 
 /**
  *  Method to print all the available moves of the current board configurations

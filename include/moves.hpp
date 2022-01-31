@@ -17,6 +17,7 @@
 struct Move
   {
     Piece* piece; // the piece that wants to make the move
+    std::array<int,2> start;  // the start square from which the piece wants to move
     std::array<int,2> square; // the square to which the piece wants to go
     Piece* capturedPiece = NULL; // a potentially captured piece on the goal square
   };

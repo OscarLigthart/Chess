@@ -35,6 +35,7 @@ class Board
         {  6, 6, 6, 6, 6, 6, 6, 6 },
         {  1, 2, 3, 4, 5, 3, 2, 1 }
     };  
+    int oldBoard[8][8]; // memory for the last configuration
 
     /**
      *  Constructor
@@ -47,9 +48,16 @@ class Board
     void buildPieces();
 
     /**
-     *  Method to make a move on the board
+     *  Method to perform a single move on the board
+     *  @param move (Move) the move struct object holding all info to make the move
      */
     void move(Move move);
+
+    /**
+     *  Method to undo a given move on the board
+     *  @param move (Move) the move struct object holding all info to make the move
+     */
+    void undo(Move move);
 
     /**
      *  Method to remove a piece from the board

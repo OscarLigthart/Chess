@@ -125,13 +125,19 @@ void Board::removePiece(Piece* p){
 void Board::move(Move move) {
 
     // get the square on the board the piece was originally at
-    int square = this->board[move.piece->y][move.piece->x];
+    int square = this->board[move.start[0]][move.start[1]];
 
+    // save the old board
+    for (int i=0; i<8;i++)
+      for (int j=0; j<8; j++) {
+          this->oldBoard[i][j] = this->board[i][j];
+      }
+    
     // update the board with the piece position
     this->board[move.square[0]][move.square[1]] = square;
 
     // old square should be zero, as there will no longer be a piece
-    this->board[move.piece->y][move.piece->x] = 0;
+    this->board[move.start[0]][move.start[1]] = 0;
 
     // check for capture here
     // need to call remove on the captured piece
@@ -141,6 +147,29 @@ void Board::move(Move move) {
 
     // make the move for the piece
     move.piece->move(move.square[0], move.square[1]);
+
+    return;
+}
+
+/**
+ *  Method to undo a given move on the board
+ *  @param move (Move) the move struct object holding all info to make the move
+ */
+void Board::undo(Move move) {
+
+    // go back to old board
+    for (int i=0; i<8;i++)
+      for (int j=0; j<8; j++) {
+          this->board[i][j] = this->oldBoard[i][j];
+      }
+
+    // put captured piece back
+    if (move.capturedPiece != NULL) {
+        this->pieces.push_back(move.capturedPiece);
+    }
+
+    // make the move for the piece to the old
+    move.piece->move(move.start[0], move.start[1]);
 
     return;
 }

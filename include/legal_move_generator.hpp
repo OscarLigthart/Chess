@@ -43,6 +43,13 @@ class LegalMoveGenerator
     std::vector<Move> generateSinglePieceMoves(Piece* piece);
 
     /**
+     *  Method to look for checks given a certain board configuration
+     *  !! IMPORTANT !! This function will only be called on pseudoboards
+     *  @param turn (int) the player's turn
+     */
+    bool lookForChecks(int turn);
+
+    /**
      *  Method to print all the available moves of the current board configurations
      *  Mainly used for debugging
      *  @param turn (int) 0 for black's turn and 1 for white's turn
