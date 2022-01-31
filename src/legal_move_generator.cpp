@@ -107,7 +107,7 @@ std::vector<Move> LegalMoveGenerator::generateSinglePieceMoves(Piece* piece) {
 
         // initialize a move struct here
         Move move = { 
-            .start = {piece->y, piece->x},
+            .piece = piece,
             .square = pieceMoveSuggestions[i],
         };
 

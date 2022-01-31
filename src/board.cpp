@@ -119,13 +119,28 @@ void Board::removePiece(Piece* p){
 }
 
 /**
- *  Make a move
+ *  Method to perform a single move on the board
+ *  @param move (Move) the move struct object holding all info to make the move
  */
 void Board::move(Move move) {
 
-    // can we copy the pieces and board?
+    // get the square on the board the piece was originally at
+    int square = this->board[move.piece->y][move.piece->x];
 
-    // that would make this a lot easier
+    // update the board with the piece position
+    this->board[move.square[0]][move.square[1]] = square;
+
+    // old square should be zero, as there will no longer be a piece
+    this->board[move.piece->y][move.piece->x] = 0;
+
+    // check for capture here
+    // need to call remove on the captured piece
+    if (move.capturedPiece != NULL) {
+        this->removePiece(move.capturedPiece);
+    }
+
+    // make the move for the piece
+    move.piece->move(move.square[0], move.square[1]);
 
     return;
 }

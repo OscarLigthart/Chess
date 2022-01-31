@@ -30,11 +30,8 @@ Engine::Engine(Board &board) {
  *  @param x the clicked file of the board
  */
 void Engine::process(Piece* selectedPiece, int y, int x) {
-
-    // get the square on the board the piece was originally at
-    int square = this->board->board[selectedPiece->y][selectedPiece->x];
     
-    // check the turn
+    // generate all the moves for the player who's turn it is
     std::vector<Moves> moves = this->lgm->generate(this->turn);
 
     // the requested move should be in the valid moves
@@ -52,21 +49,8 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
 
                 if (move.square[0] == y && move.square[1] == x){
                     
-                    // here we should actually make the move
-                    // update the board with the piece position
-                    this->board->board[y][x] = square;
-
-                    // old square should be zero, as there will no longer be a piece
-                    this->board->board[selectedPiece->y][selectedPiece->x] = 0;
-
-                    // check for capture here
-                    // need to call remove on the captured piece
-                    if (move.capturedPiece != NULL) {
-                        this->board->removePiece(move.capturedPiece);
-                    }
-
-                    // make the move for the piece
-                    selectedPiece->move(y, x);
+                    // perform the move
+                    this->board->move(move);
 
                     // set the other turn
                     this->turn = !turn;
