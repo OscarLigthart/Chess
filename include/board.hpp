@@ -54,6 +54,12 @@ class Board
     void move(Move move);
 
     /**
+     *  Method to perform a single move on the board
+     *  @param move (Move) the move struct object holding all info to make the move
+     */
+    void pseudoMove(Move move);
+
+    /**
      *  Method to undo a given move on the board
      *  @param move (Move) the move struct object holding all info to make the move
      */

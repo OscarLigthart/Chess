@@ -124,6 +124,23 @@ void Board::removePiece(Piece* p){
  */
 void Board::move(Move move) {
 
+    // perform as pseudomove
+    this->pseudoMove(move);
+
+    // check for capture here
+    // need to call remove on the captured piece
+    if (move.capturedPiece != NULL) {
+        this->removePiece(move.capturedPiece);
+    }
+
+    return;
+}
+
+/** 
+ *  Can we do it without the capture?
+ */
+void Board::pseudoMove(Move move) {
+
     // get the square on the board the piece was originally at
     int square = this->board[move.start[0]][move.start[1]];
 
@@ -132,18 +149,16 @@ void Board::move(Move move) {
       for (int j=0; j<8; j++) {
           this->oldBoard[i][j] = this->board[i][j];
       }
+
+    if (move.capturedPiece != NULL) {
+        std::cout << this->pieces.size() << "\n";
+    }
     
     // update the board with the piece position
     this->board[move.square[0]][move.square[1]] = square;
 
     // old square should be zero, as there will no longer be a piece
     this->board[move.start[0]][move.start[1]] = 0;
-
-    // check for capture here
-    // need to call remove on the captured piece
-    if (move.capturedPiece != NULL) {
-        this->removePiece(move.capturedPiece);
-    }
 
     // make the move for the piece
     move.piece->move(move.square[0], move.square[1]);
@@ -162,11 +177,6 @@ void Board::undo(Move move) {
       for (int j=0; j<8; j++) {
           this->board[i][j] = this->oldBoard[i][j];
       }
-
-    // put captured piece back
-    if (move.capturedPiece != NULL) {
-        this->pieces.push_back(move.capturedPiece);
-    }
 
     // make the move for the piece to the old
     move.piece->move(move.start[0], move.start[1]);
