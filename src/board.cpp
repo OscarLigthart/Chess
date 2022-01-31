@@ -119,6 +119,19 @@ void Board::removePiece(Piece* p){
 }
 
 /**
+ *  Make a move
+ */
+void Board::move(Move move) {
+
+    // can we copy the pieces and board?
+
+    // that would make this a lot easier
+
+    return;
+}
+
+
+/**
  *  Method to print the board
  */
 void Board::print() {

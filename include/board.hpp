@@ -6,6 +6,7 @@
 #define BOARD
 
 #include <piece.hpp>
+#include <moves.hpp>
 
 
 class Board 
@@ -44,6 +45,11 @@ class Board
      *  Method to build the pieces to the board
      */
     void buildPieces();
+
+    /**
+     *  Method to make a move on the board
+     */
+    void move(Move move);
 
     /**
      *  Method to remove a piece from the board
