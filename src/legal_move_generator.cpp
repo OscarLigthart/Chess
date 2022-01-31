@@ -63,8 +63,8 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
             this->board->undo(move);
         }
 
-        // add the valid moves
-        validMoves.push_back(validPieceMoves);
+        // add the valid moves object if it has any moves
+        if (validPieceMoves.moves.size() > 0) validMoves.push_back(validPieceMoves);
     }
 
     return validMoves;
@@ -167,12 +167,28 @@ std::vector<Move> LegalMoveGenerator::generateSinglePieceMoves(Piece* piece) {
  */
 bool LegalMoveGenerator::lookForChecks(int turn) {
 
-    // we have to generate all possible piece moves
+    // we have to generate all possible piece moves of the other player!
+    // we do it of the other player by flipping the integer from 1 to 0 and vice versa
+    std::vector<Moves> allPieceMoves = this->generateAllPieceMoves(!turn);
 
     // loop over them
+    for (int i=0; i<allPieceMoves.size(); i++) {
 
-    // look for checks
+        // extract moves for a single piece
+        Moves pieceMoves = allPieceMoves[i];
 
+        // loop over the moves from this piece
+        for (int j=0; j<pieceMoves.moves.size(); j++) {
+
+            // extract a single move
+            Move move = pieceMoves.moves[j];
+
+            // check if this move potentially captures a king
+            if (move.capturedPiece != NULL) {
+                if (move.capturedPiece->notation == "K") return true;
+            }
+        }
+    }
 
     // if we reach this we found no checks
     return false;

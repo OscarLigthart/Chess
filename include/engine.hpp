@@ -16,6 +16,7 @@ class Engine
     Board* board;
     LegalMoveGenerator* lgm;
     int turn = 1; // 1 for white and 0 for black
+    std::vector<Moves> moves; // keep track of the valid moves in the current game state
 
 
     /**
@@ -30,6 +31,11 @@ class Engine
      *  @param x the clicked file of the board
      */
     void process(Piece* selectedPiece, int y, int x);
+
+    /**
+     *  Function to check whether the game is over given the current board configuration
+     */
+    void checkGameOver();
 };
 
 #endif
