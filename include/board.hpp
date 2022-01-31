@@ -26,14 +26,14 @@ class Board
     
     // board engine layout
     int board[8][8] = {
-        { -1,-2,-3,-4,-5,-3,-2,-1 },
-        { -6,-6,-6, -6,-6,-6,-6,-6 },
+        { -1,-2,-3,0,-5,0,0,-1 },
+        { -6,-6,-6, -6,-4,-6,-6,-6 },
         {  0, 0, 0, 0, 0, 0, 0, 0 },
         {  0, 0, 0, 0, 0, 0, 0, 0 },
         {  0, 0, 0, 0, 0, 0, 0, 0 },
         {  0, 0, 0, 0, 0, 0, 0, 0 },
-        {  6, 6, 6, 6, 6, 6, 6, 6 },
-        {  1, 2, 3, 4, 5, 3, 2, 1 }
+        {  6, 6, 6, 6, 4, 6, 6, 6 },
+        {  1, 2, 3, 0, 5, 3, 2, 1 }
     };  
     int oldBoard[8][8]; // memory for the last configuration
 
@@ -52,12 +52,6 @@ class Board
      *  @param move (Move) the move struct object holding all info to make the move
      */
     void move(Move move);
-
-    /**
-     *  Method to perform a single move on the board
-     *  @param move (Move) the move struct object holding all info to make the move
-     */
-    void pseudoMove(Move move);
 
     /**
      *  Method to undo a given move on the board

@@ -68,7 +68,7 @@ std::vector<std::array<int, 2>> Queen::getMoves(int board[8][8]) {
             std::array<int,2> new_move = {start[0] + directions[i][0], start[1] + directions[i][1]};
 
             // start by checking for out of bounds
-            bool outOfBounds = this->checkOutOfBounds(new_move[1], new_move[0]);
+            bool outOfBounds = this->checkOutOfBounds(new_move[0], new_move[1]);
 
             // stop if we are out of bounds
             if (outOfBounds) { break; }

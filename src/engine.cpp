@@ -25,6 +25,8 @@ Engine::Engine(Board &board) {
     // generate all the moves for the player who's turn it is
     this->moves = this->lgm->generate(this->turn);
 
+    this->lgm->printMoves(this->turn);
+
 }
 
 /**

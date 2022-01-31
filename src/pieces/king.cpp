@@ -64,10 +64,10 @@ std::vector<std::array<int, 2>> King::getMoves(int board[8][8]) {
         std::array<int,2> new_move = {start[0] + directions[i][0], start[1] + directions[i][1]};
 
         // start by checking for out of bounds
-        bool outOfBounds = this->checkOutOfBounds(new_move[1], new_move[0]);
+        bool outOfBounds = this->checkOutOfBounds(new_move[0], new_move[1]);
 
         // stop if we are out of bounds
-        if (outOfBounds) { break; }
+        if (outOfBounds) { continue; }
         
         // retrieve the piece that is placed on the square of the new move
         int square = board[new_move[0]][new_move[1]];
@@ -82,14 +82,14 @@ std::vector<std::array<int, 2>> King::getMoves(int board[8][8]) {
             if (collision[1]) { moves.push_back(new_move); }
             
             // stop the loop
-            break;
+            continue;
         }
 
 
         // if we reach this we can add the move to the total moves
         moves.push_back(new_move);
     }
-
+    
     // the total set of valid moves
     return moves;
 }

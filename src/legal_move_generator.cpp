@@ -49,7 +49,7 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
             Move move = pieceMoves.moves[j];
 
             // make the move
-            this->board->pseudoMove(move);
+            this->board->move(move);
 
             // here we need to check all the moves again and see if the king is in check
             // FOR THIS WE NEED TO GENERATE ALL THE MOVES OF THE !!OTHER!! PLAYER
@@ -64,7 +64,9 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         }
 
         // add the valid moves object if it has any moves
+        validPieceMoves.generateNotations();
         if (validPieceMoves.moves.size() > 0) validMoves.push_back(validPieceMoves);
+        
     }
 
     return validMoves;

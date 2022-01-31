@@ -103,9 +103,6 @@ void Board::buildPieces( ){
  */
 void Board::removePiece(Piece* p){
     
-    // delete the piece object
-    delete p;
-
     // index of piece to be removed
     int index;
 
@@ -123,23 +120,6 @@ void Board::removePiece(Piece* p){
  *  @param move (Move) the move struct object holding all info to make the move
  */
 void Board::move(Move move) {
-
-    // perform as pseudomove
-    this->pseudoMove(move);
-
-    // check for capture here
-    // need to call remove on the captured piece
-    if (move.capturedPiece != NULL) {
-        this->removePiece(move.capturedPiece);
-    }
-
-    return;
-}
-
-/** 
- *  Can we do it without the capture?
- */
-void Board::pseudoMove(Move move) {
 
     // get the square on the board the piece was originally at
     int square = this->board[move.start[0]][move.start[1]];
@@ -163,6 +143,12 @@ void Board::pseudoMove(Move move) {
     // make the move for the piece
     move.piece->move(move.square[0], move.square[1]);
 
+    // check for capture here
+    // if we capture, remove the piece from the pieces list
+    if (move.capturedPiece != NULL) {
+        this->removePiece(move.capturedPiece);
+    }
+
     return;
 }
 
@@ -177,6 +163,11 @@ void Board::undo(Move move) {
       for (int j=0; j<8; j++) {
           this->board[i][j] = this->oldBoard[i][j];
       }
+
+    // put captured piece back
+    if (move.capturedPiece != NULL) {
+        this->pieces.push_back(move.capturedPiece);
+    }
 
     // make the move for the piece to the old
     move.piece->move(move.start[0], move.start[1]);

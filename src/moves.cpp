@@ -18,9 +18,6 @@ Moves::Moves(std::string piece, int pieceId, std::vector<Move> moves) {
     this->piece = piece;
     this->pieceId = pieceId;
     this->moves = moves;
-
-    // generate the human readable moves
-    this->generateNotations();
 }
 
 /**
@@ -29,7 +26,7 @@ Moves::Moves(std::string piece, int pieceId, std::vector<Move> moves) {
 void Moves::generateNotations(){
     
     // loop over the amount of moves
-    for (int i; i<this->moves.size(); i++) {
+    for (int i=0; i<this->moves.size(); i++) {
 
         // initialize a move string
         std::string notation;
