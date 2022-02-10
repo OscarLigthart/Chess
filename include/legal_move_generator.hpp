@@ -54,7 +54,7 @@ class LegalMoveGenerator
      *  board configuration
      *  @param turn (int) the player's turn
      */ 
-    std::vector<Move> checkCastling(int turn);
+    std::vector<Moves> checkCastling(int turn);
 
     /**
      *  Method to print all the available moves of the current board configurations
