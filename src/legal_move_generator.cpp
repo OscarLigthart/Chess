@@ -69,6 +69,9 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
         
     }
 
+    // check for castling
+    std::vector<Moves> castleMoves = this->checkCastling(turn);
+
     return validMoves;
 }
 
@@ -194,6 +197,77 @@ bool LegalMoveGenerator::lookForChecks(int turn) {
 
     // if we reach this we found no checks
     return false;
+}
+
+/**
+ *  Method that checks if the player has castling rights given a certain
+ *  board configuration
+ *  @param turn (int) the player's turn
+ */
+std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
+
+    // initialize Moves object 
+    std::vector<Moves> moves;
+
+    // extract the pieces?
+    Piece* king;
+    Piece* r1;
+    Piece* r2;
+
+    // get the king of the player who's turn it is
+    for (int i=0; i<this->board->pieces.size(); i++) {
+        
+        // only generate moves for pieces that belong to the side who's turn it is
+        if (this->board->pieces[i]->player != turn) {
+            continue;
+        }
+
+        // extract king
+        if (this->board->pieces[i]->notation != "K") {
+            king = this->board->pieces[i];
+
+        // we need both rooks
+        } else if (this->board->pieces[i]->notation != "R") {
+            
+            // extract the rooks one by one
+            if (r1.id == NULL) r1 = this->board->pieces[i];
+            else r2 = this->board->pieces[i];
+        }
+    }
+        
+    // create a moves class with empty moves for the king holding the castling moves there
+    Moves moves = Moves(king->notation, king->id, std::vector<Move> {});     
+
+    // if the king has moved we return an empty move list
+    if (king->has_moved) return moves;
+
+    /**
+     *  Check short castling
+     */
+    
+    // short rook should not have moved
+
+    // no pieces in between
+
+    // none of the position where the king is should lead to a check
+
+    /**
+     *  Check long castling
+     */
+
+    // long rook should not have moved
+
+    // no pieces in between
+
+    // none of the position where the king is going to be should lead to a check
+
+    /**
+     *  Create the move
+     */
+    // we should create two moves, and label them as castling moves, so they can both be performed
+    // by the engine
+
+
 }
 
 /**

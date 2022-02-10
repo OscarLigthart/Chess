@@ -34,6 +34,7 @@ class Moves
     std::string piece;
     std::vector<Move> moves;
     std::vector<std::string> notations; // human readable chess move notations
+    bool castling = false; // boolean denoting whether this moveset is a castling move
 
     /**
      *  Constructor

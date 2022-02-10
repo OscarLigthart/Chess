@@ -102,7 +102,15 @@ bool Piece::checkOutOfBounds(int y, int x) {
     }
 }
 
+/**
+ *  Method to set the piece to a new position
+ */
 void Piece::setPosition(int y, int x) {
+
+    // denote that this piece has moved
+    this->has_moved = true;
+
+    // move the piece
     this->y = y;
     this->x = x;
 

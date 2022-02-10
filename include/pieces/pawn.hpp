@@ -16,7 +16,7 @@ class Pawn: public Piece
     using Piece::player;
     using Piece::notation;
     int playerValue; // the player value translated to -1 and 1
-    bool has_moved = false;
+    using Piece::has_moved;
 
     /**
      *  Constructor

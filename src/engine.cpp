@@ -49,6 +49,7 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
                 // extract the move
                 Move move = this->moves[i].moves[j];
 
+                // for the move to be valid the clicked square should be the goal of the move
                 if (move.square[0] == y && move.square[1] == x){
                     
                     // perform the move
@@ -66,6 +67,12 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
                     // stop here
                     return;
                 }
+
+                // here we should check for castling
+                // king should have a move labelled castling
+
+                // generate a new moves object under the king, this one should have the move of the rook as well
+
             }
         }
     }
