@@ -17,6 +17,7 @@ class Piece {               // The class
     int piece_size = 100;   // 800/8
     int player;
     int id;                 // the ID of the piece
+    bool has_moved = false; // boolean whether the piece has moved
     std::string notation;
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece
