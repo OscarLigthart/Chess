@@ -70,7 +70,7 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
     }
 
     // check for castling
-    std::vector<Moves> castleMoves = this->checkCastling(turn);
+    // std::vector<Moves> castleMoves = this->checkCastling(turn);
 
     return validMoves;
 }
@@ -230,13 +230,13 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         } else if (this->board->pieces[i]->notation != "R") {
             
             // extract the rooks one by one
-            if (r1.id == NULL) r1 = this->board->pieces[i];
+            if (r1->id == NULL) r1 = this->board->pieces[i];
             else r2 = this->board->pieces[i];
         }
     }
         
     // create a moves class with empty moves for the king holding the castling moves there
-    Moves moves = Moves(king->notation, king->id, std::vector<Move> {});     
+    Moves kingMoves = Moves(king->notation, king->id, std::vector<Move> {});     
 
     // if the king has moved we return an empty move list
     if (king->has_moved) return moves;
