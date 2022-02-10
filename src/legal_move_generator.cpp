@@ -235,11 +235,38 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         }
     }
         
+    // create a moves class with empty moves for the king holding the castling moves there
+    Moves moves = Moves(king->notation, king->id, std::vector<Move> {});     
 
+    // if the king has moved we return an empty move list
+    if (king->has_moved) return moves;
 
-    // create a moves class for the piece holding all legal moves in there
-    // why?
-    Moves moves = Moves(piece->notation, piece->id, pieceMoves);     
+    /**
+     *  Check short castling
+     */
+    
+    // short rook should not have moved
+
+    // no pieces in between
+
+    // none of the position where the king is should lead to a check
+
+    /**
+     *  Check long castling
+     */
+
+    // long rook should not have moved
+
+    // no pieces in between
+
+    // none of the position where the king is going to be should lead to a check
+
+    /**
+     *  Create the move
+     */
+    // we should create two moves, and label them as castling moves, so they can both be performed
+    // by the engine
+
 
 }
 
