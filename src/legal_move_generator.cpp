@@ -222,23 +222,23 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
             continue;
         }
 
+        // extract king
         if (this->board->pieces[i]->notation != "K") {
             king = this->board->pieces[i];
+
+        // we need both rooks
         } else if (this->board->pieces[i]->notation != "R") {
-            // r1 = this->board->pieces[i];
-            r1 r2
+            
+            // extract the rooks one by one
+            if (r1.id == NULL) r1 = this->board->pieces[i];
+            else r2 = this->board->pieces[i];
         }
-
-        // here we have the king
-
-        // do we need the rook?
-
-        // 
     }
         
 
 
     // create a moves class for the piece holding all legal moves in there
+    // why?
     Moves moves = Moves(piece->notation, piece->id, pieceMoves);     
 
 }
