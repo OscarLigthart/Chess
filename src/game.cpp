@@ -8,11 +8,11 @@
 
 
 #include <game.hpp>
+#include <game/legal_move_generator.hpp>
+#include <game/moves.hpp>
 #include <interface.hpp>
 #include <board.hpp>
-#include <moves.hpp>
 #include <iostream>
-#include <legal_move_generator.hpp>
 
 Game::Game(Board &board) {
     

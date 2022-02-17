@@ -7,7 +7,7 @@
 #define LEGAL_MOVE_GENERATOR
 
 #include <board.hpp>
-#include <moves.hpp>
+#include <game/moves.hpp>
 #include <array>
 #include <vector>
 

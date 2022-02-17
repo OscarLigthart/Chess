@@ -7,7 +7,7 @@
 
 #include <board.hpp>
 #include <piece.hpp>
-#include <legal_move_generator.hpp>
+#include <game/legal_move_generator.hpp>
 
 
 class Game

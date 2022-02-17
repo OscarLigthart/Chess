@@ -2,8 +2,8 @@
  *  Class that holds the base logic of a piece
  */
 
-#ifndef PIECE_ROOK
-#define PIECE_ROOK
+#ifndef PIECE_ROOK_H
+#define PIECE_ROOK_H
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>

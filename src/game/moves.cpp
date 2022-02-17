@@ -3,7 +3,7 @@
  *  This class takes a pieces moves and encapsulates them
  */
 
-#include <moves.hpp>
+#include <game/moves.hpp>
 #include <string>
 #include <vector>
 #include <array>

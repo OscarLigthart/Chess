@@ -2,8 +2,8 @@
  *  Class that holds the base logic of a piece
  */
 
-#ifndef PIECE_PAWN
-#define PIECE_PAWN
+#ifndef PIECE_PAWN_H
+#define PIECE_PAWN_H
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>

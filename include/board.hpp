@@ -2,11 +2,11 @@
  *  Header file of the board
  */
 
-#ifndef BOARD
-#define BOARD
+#ifndef BOARD_H
+#define BOARD_H
 
 #include <piece.hpp>
-#include <moves.hpp>
+#include <game/moves.hpp>
 
 
 class Board 

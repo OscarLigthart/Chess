@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <board.hpp>
+#include <game/moves.hpp>
 #include <piece.hpp>
-#include <moves.hpp>
 #include <pieces/bishop.hpp>
 #include <pieces/king.hpp>
 #include <pieces/knight.hpp>

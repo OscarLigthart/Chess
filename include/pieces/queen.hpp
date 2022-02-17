@@ -2,8 +2,8 @@
  *  Class that holds the base logic of a piece
  */
 
-#ifndef PIECE_QUEEN
-#define PIECE_QUEEN
+#ifndef PIECE_QUEEN_H
+#define PIECE_QUEEN_H
 
 #include <SFML/Graphics.hpp>
 #include <piece.hpp>

@@ -3,7 +3,7 @@
 #include <time.h>
 #include <board.hpp>
 #include <game.hpp>
-#include <legal_move_generator.hpp>
+#include <game/legal_move_generator.hpp>
 #include <interface.hpp>
 #include <vector>
 #include <cmath>
