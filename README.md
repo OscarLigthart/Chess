@@ -1,5 +1,7 @@
 # Chess
 
+This repo consists of a self implemented version of the game of Chess.
+
 ## Setup from source
 
 ### Prerequisites
