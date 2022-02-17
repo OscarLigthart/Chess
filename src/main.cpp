@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <board.hpp>
-#include <engine.hpp>
+#include <game.hpp>
 #include <legal_move_generator.hpp>
 #include <interface.hpp>
 #include <vector>
@@ -43,8 +43,8 @@ int main() {
     // initialize the interface
     Interface interface;
 
-    // initialize the game engine
-    Engine engine = Engine(board);
+    // initialize the game class
+    Game game = Game(board);
 
     // The main loop - ends as soon as the window is closed
     while (window.isOpen())
@@ -73,14 +73,14 @@ int main() {
                     // if we're not already moving a piece we should process the input
                     // to determine which piece is clicked
                     if (!interface.moving) {
-                        interface.processInput(board, x, y, engine.turn);
+                        interface.processInput(board, x, y, game.turn);
                     }
                     // if we are moving then this click means we're putting a piece somewhere
                     else {
 
-                        // let the engine process the requested move 
+                        // let the game process the requested move 
                         // this is where the magic happens, the move is checked and if it's valid it's performed
-                        engine.process(interface.selectedPiece, y, x);
+                        game.process(interface.selectedPiece, y, x);
 
                         // reset the interface so we can process the next click
                         interface.reset();

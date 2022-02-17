@@ -1,16 +1,16 @@
 /**
- *  Header file of the game engine
+ *  Header file of the game class
  */
 
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <board.hpp>
 #include <piece.hpp>
 #include <legal_move_generator.hpp>
 
 
-class Engine 
+class Game
   {
     public:
     Board* board;
@@ -22,7 +22,7 @@ class Engine
     /**
      *  Constructor
      */    
-    Engine(Board &board);
+    Game(Board &board);
 
     /**
      *  Function to process clicked squares on the board

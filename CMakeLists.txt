@@ -27,7 +27,7 @@ set(HEADERS
     include/pieces/knight.hpp
     include/legal_move_generator.hpp
     include/moves.hpp
-    include/engine.hpp
+    include/game.hpp
 )
 
 set(SOURCES
@@ -43,7 +43,7 @@ set(SOURCES
     src/pieces/pawn.cpp
     src/legal_move_generator.cpp
     src/moves.cpp
-    src/engine.cpp
+    src/game.cpp
 )
 
 add_executable(chess 

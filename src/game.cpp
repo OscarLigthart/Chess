@@ -1,20 +1,20 @@
 /**
- *  Implementation of the game engine
+ *  Implementation of the game class
  * 
- *  The engine is the place where everything comes together
+ *  The game class is the place where everything comes together
  *  end-to-end, it will process the clicked file all the way up
  *  to checking the validity of the move and making it happen
  */
 
 
-#include <engine.hpp>
+#include <game.hpp>
 #include <interface.hpp>
 #include <board.hpp>
 #include <moves.hpp>
 #include <iostream>
 #include <legal_move_generator.hpp>
 
-Engine::Engine(Board &board) {
+Game::Game(Board &board) {
     
     // inherit the board
     this->board = &board;
@@ -34,7 +34,7 @@ Engine::Engine(Board &board) {
  *  @param y the clicked rank of the board
  *  @param x the clicked file of the board
  */
-void Engine::process(Piece* selectedPiece, int y, int x) {
+void Game::process(Piece* selectedPiece, int y, int x) {
     
     // the requested move should be in the valid moves
     for (int i=0; i<this->moves.size(); i++) {
@@ -84,7 +84,7 @@ void Engine::process(Piece* selectedPiece, int y, int x) {
 /**
  *  Method that checks whether the game is over
  */
-void Engine::checkGameOver() {
+void Game::checkGameOver() {
 
     // check for checkmate
     if (this->moves.size() == 0) std::cout << "Checkmate!" << "\n";
