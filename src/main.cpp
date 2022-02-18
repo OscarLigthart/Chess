@@ -87,7 +87,6 @@ int main() {
                         // reset the interface so we can process the next click
                         interface.reset();
                     }
-
                 }
 
             // place it on top of the mouse if we're in moving state
