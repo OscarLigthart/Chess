@@ -34,11 +34,9 @@ int main() {
     // initialize the board
     Board board;
 
-    // initialize textures
-    sf::Texture b, figures;
+    // initialize board texture
+    sf::Texture b;
     b.loadFromFile("../img/board.png");  
-
-    board.figures.loadFromFile("../img/pieces.png");    
     board.boardSprite.setTexture(b);
     board.boardSprite.setScale(0.66666666f, 0.66666666f); 
     

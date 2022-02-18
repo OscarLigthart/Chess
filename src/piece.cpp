@@ -8,14 +8,10 @@
 #include <vector>
 #include <array>
 
-Piece::Piece() {
-
-    // let the world know we're creating the pieces
-    std::cout << "Creating Piece\n";
-
-    // set the texture here
-    figures.loadFromFile("../img/pieces.png");
-}
+/**
+ *  Constructor
+ */
+Piece::Piece() {}
 
 void Piece::move(int y, int x) {
 
