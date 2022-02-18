@@ -2,7 +2,7 @@
 
 This repo consists of a self implemented version of the game of Chess.
 
-<img src="/docs/img/thumbnail.png" alt="Example image of the chess board."/>
+<img src="/docs/img/thumbnail.png" alt="Example image of the chess board." width="400" height="400"/>
 
 ## Setup from source
 
