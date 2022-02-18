@@ -32,22 +32,6 @@ Pawn::Pawn(int player, int id) {
     this->notation = "";
 }
 
-bool Pawn::isValidMove(int y, int x) {
-
-    // get difference in movement
-    int dy = this->y - y;
-    int dx = std::abs(this->x - x);
-
-    if (dy == player && dx == 0) {
-        return true;
-    } else if (dy == player * 2 && dx == 0 && !this->has_moved){
-        this->has_moved = true;
-        return true;
-    } else {
-        return false;
-    }
-}
-
 /**
  *  Method that retrieves all moves for this piece
  *

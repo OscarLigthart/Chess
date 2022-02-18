@@ -27,20 +27,6 @@ Knight::Knight(int player, int id) {
     this->notation = "N";   
 }
 
-bool Knight::isValidMove(int y, int x) {
-
-    // get difference in movement
-    int dy = std::abs(this->y - y);
-    int dx = std::abs(this->x - x);
-
-    // difference should be one and both should be lower than 3
-    if ((dx == 2 || dx == 1) && (dy == dx % 2 + 1)) {
-        return true;
-    } else {
-        return false;
-    }   
-}
-
 /**
  *  Method that retrieves all moves for this piece
  *

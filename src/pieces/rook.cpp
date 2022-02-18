@@ -5,6 +5,9 @@
 #include <iostream>
 #include <pieces/rook.hpp>
 
+/**
+ *  Constructor
+ */
 Rook::Rook(int player, int id) {
 
     // determine which player is handled to get the color
@@ -21,15 +24,6 @@ Rook::Rook(int player, int id) {
     this->player = player;
     this->id = id;
     this->notation = "R";
-}
-
-bool Rook::isValidMove(int y, int x) {
-    // to go straight, one coordinate needs to stay equal  
-    if (this->x == x || this->y == y) {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 /**

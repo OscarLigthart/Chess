@@ -5,6 +5,10 @@
 #include <iostream>
 #include <pieces/queen.hpp>
 
+
+/**
+ *  Constructor
+ */
 Queen::Queen(int player, int id){
 
     // determine which player is handled to get the color
@@ -20,22 +24,6 @@ Queen::Queen(int player, int id){
     this->player = player;
     this->id = id;
     this->notation = "Q";
-}
-
-bool Queen::isValidMove(int y, int x) {
-
-    // get difference in movement
-    int dy = std::abs(this->y - y);
-    int dx = std::abs(this->x - x);
-
-    // rook and bishop combined
-    if (dy == dx) {
-        return true;
-    } else if (this->x == x || this->y == y){
-        return true;
-    } else {
-        return false;
-    }
 }
 
 /**

@@ -9,6 +9,9 @@
 #include <array>
 
 
+/**
+ *  Constructor
+ */
 Bishop::Bishop(int player, int id) {
 
     // determine which player is handled to get the color
@@ -28,20 +31,6 @@ Bishop::Bishop(int player, int id) {
 
     this->notation = "B";
     
-}
-
-bool Bishop::isValidMove(int y, int x) {
-
-    // get difference in movement
-    int dy = std::abs(this->y - y);
-    int dx = std::abs(this->x - x);
-
-    // difference needs to be equal to go diagonal
-    if (dy == dx) {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 /**

@@ -27,20 +27,6 @@ King::King(int player, int id) {
     this->notation = "K";
 }
 
-bool King::isValidMove(int y, int x){
-
-    // get difference in movement
-    int dy = std::abs(this->y - y);
-    int dx = std::abs(this->x - x);
-
-    // only a single step
-    if ((dy == 1 || dx == 1) && (dy < 2 && dx < 2)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 /**
  *  Method that retrieves all moves for this piece
  *

@@ -22,11 +22,6 @@ class Knight: public Piece
     Knight (int player, int id);
 
     /**
-     *  Method to check if move is valid
-     */ 
-    bool isValidMove(int y, int x);
-
-    /**
      *  Method that retrieves all moves for this piece
      */ 
     std::vector<std::array<int, 2>> getMoves(int board[8][8]);
