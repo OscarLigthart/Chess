@@ -37,9 +37,11 @@ int main() {
     // initialize textures
     sf::Texture b, figures;
     b.loadFromFile("../img/board.png");  
-    board.figures.loadFromFile("../img/pieces.png");    
-    board.boardSprite.setTexture(b);  
 
+    board.figures.loadFromFile("../img/pieces.png");    
+    board.boardSprite.setTexture(b);
+    board.boardSprite.setScale(0.66666666f, 0.66666666f); 
+    
     // initialize the interface
     Interface interface;
 

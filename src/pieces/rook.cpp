@@ -7,19 +7,17 @@
 
 Rook::Rook(int player, int id) {
 
-    // let the world know that a rook has been created
-    std::cout << "Creating Rook\n";
+    // determine which player is handled to get the color
+    std::string color = player == 0 ? "black" : "white";
 
     // set the texture here
-    this->figures.loadFromFile("../img/pieces.png");
+    this->figures.loadFromFile("../img/pieces/" + color + "/rook.png");
 
     // set the texture here
     this->sprite.setTexture(this->figures);
+    this->sprite.setScale(0.66f, 0.66f);
 
-    // std::cout << this->size;
-    this->sprite.setTextureRect( sf::IntRect(this->size*0, this->size*player, this->size, this->size)); 
-    this->sprite.setScale(1.8f, 1.65f);  
-
+    // store variables
     this->player = player;
     this->id = id;
     this->notation = "R";

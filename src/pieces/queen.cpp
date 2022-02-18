@@ -5,19 +5,17 @@
 #include <iostream>
 #include <pieces/queen.hpp>
 
-Queen::Queen(int player, int id) {
+Queen::Queen(int player, int id){
 
-    // let the world know we're creating a queen
-    std::cout << "Creating Queen\n";
+    // determine which player is handled to get the color
+    std::string color = player == 0 ? "black" : "white";
 
     // set the texture here
-    this->figures.loadFromFile("../img/pieces.png");
+    this->figures.loadFromFile("../img/pieces/" + color + "/queen.png");
+
     // set the texture here
     this->sprite.setTexture(this->figures);
-
-    // std::cout << this->size;
-    this->sprite.setTextureRect( sf::IntRect(this->size*3, this->size*player, this->size, this->size)); 
-    this->sprite.setScale(1.8f, 1.65f);  
+    this->sprite.setScale(0.66f, 0.66f);
 
     this->player = player;
     this->id = id;

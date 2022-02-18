@@ -15,6 +15,7 @@ class Queen: public Piece
     using Piece::id;
     using Piece::player;
     using Piece::notation;
+    // using Piece::figures;
 
     /**
      *  Constructor

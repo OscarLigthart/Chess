@@ -11,17 +11,16 @@
 
 Bishop::Bishop(int player, int id) {
 
-    // let the world know we're creating a bishop
-    std::cout << "Creating Bishop\n";
+    // determine which player is handled to get the color
+    std::string color = player == 0 ? "black" : "white";
 
     // set the texture here
-    this->figures.loadFromFile("../img/pieces.png");
+    this->figures.loadFromFile("../img/pieces/" + color + "/bishop.png");
+
     // set the texture here
     this->sprite.setTexture(this->figures);
+    this->sprite.setScale(0.66f, 0.66f);
 
-    // std::cout << this->size;
-    this->sprite.setTextureRect( sf::IntRect(this->size*2, this->size*player, this->size, this->size)); 
-    this->sprite.setScale(1.8f, 1.65f); 
 
     // set the player var
     this->player = player;
