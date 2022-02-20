@@ -9,24 +9,6 @@
 #include <cmath>
 
 
-
-int size = 56; // required for cutting out the pieces 
-int piece_size = 100; // 800/8
-sf::Sprite f[32];
-std::vector <Piece*> pieces;
-
-int board[8][8] = {
-    { -1,-2,-3,-4,-5,-3,-2,-1 },
-    { -6,-6,-6,-6,-6,-6,-6,-6 },
-    {  0, 0, 0, 0, 0, 0, 0, 0 },
-    {  0, 0, 0, 0, 0, 0, 0, 0 },
-    {  0, 0, 0, 0, 0, 0, 0, 0 },
-    {  0, 0, 0, 0, 0, 0, 0, 0 },
-    {  6, 6, 6, 6, 6, 6, 6, 6 },
-    {  1, 2, 3, 4, 5, 3, 2, 1 }
-};
-
-
 int main() {
     // Declare and create a new render-window
     sf::RenderWindow window(sf::VideoMode(800, 800), "Chess");
