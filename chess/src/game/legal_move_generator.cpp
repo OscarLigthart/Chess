@@ -258,12 +258,12 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
             .piece = king,
             .start = {king->y, king->x},
             .square = {king->y, king->x + 2},
-        }
+        };
         Move rookMove = {
             .piece = rookKingSide,
             .start = {rookKingSide->y, rookKingSide->x},
             .square = {rookKingSide->y, rookKingSide->x - 2}
-        }
+        };
 
         // add them
         shortMoves.push_back(kingMove);
@@ -293,12 +293,12 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
             .piece = king,
             .start = {king->y, king->x},
             .square = {king->y, king->x - 2},
-        }
+        };
         Move rookMove = {
             .piece = rookQueenSide,
             .start = {rookQueenSide->y, rookQueenSide->x},
             .square = {rookQueenSide->y, rookQueenSide->x - 2}
-        }
+        };
 
         // add them
         longMoves.push_back(kingMove);
