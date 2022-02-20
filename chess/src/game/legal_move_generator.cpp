@@ -209,10 +209,10 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
     // initialize Moves object 
     std::vector<Moves> moves;
 
-    // extract the pieces?
+    // extract the pieces
     Piece* king;
-    Piece* r1;
-    Piece* r2;
+    Piece* rookLong;
+    Piece* rookShort;
 
     // get the king of the player who's turn it is
     for (int i=0; i<this->board->pieces.size(); i++) {
@@ -229,9 +229,10 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         // we need both rooks
         } else if (this->board->pieces[i]->notation != "R") {
             
-            // extract the rooks one by one
-            if (r1->id == NULL) r1 = this->board->pieces[i];
-            else r2 = this->board->pieces[i];
+            // save the rook according to the information stored in the class 
+            // about whether it's the short or long castle
+            if (this->board->pieces[i]->castle == "long") rookLong = this->board->pieces[i];
+            else rookShort = this->board->pieces[i];
         }
     }
         
@@ -266,6 +267,8 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
      */
     // we should create two moves, and label them as castling moves, so they can both be performed
     // by the engine
+
+    // it should be started by moving the king two pieces to the left/right
 
 
 }

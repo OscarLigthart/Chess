@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */
-Rook::Rook(int player, int id) {
+Rook::Rook(int player, int id, int file) {
 
     // determine which player is handled to get the color
     std::string color = player == 0 ? "black" : "white";
@@ -25,6 +25,9 @@ Rook::Rook(int player, int id) {
     this->player = player;
     this->id = id;
     this->notation = "R";
+
+    // determine based on the file if this is the long or short castle
+    this->castle = file == 0 ? "long" : "short";
 }
 
 /**

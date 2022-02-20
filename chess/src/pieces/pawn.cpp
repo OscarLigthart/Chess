@@ -119,8 +119,5 @@ void Pawn::setPosition(int y, int x) {
     // move the piece
     this->y = y;
     this->x = x;
-
-    this->position[0] = y;
-    this->position[1] = x;
 }
 

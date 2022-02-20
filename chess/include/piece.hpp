@@ -12,13 +12,12 @@ class Piece {               // The class
   public:                   // Access specifier
     int y;                  // position in y coordinates
     int x;                  // position in x coordinates
-    int position[2];
-    int size = 56;          // required for cutting out the pieces 
     int piece_size = 100;   // 800/8
     int player;
-    int id;                 // the ID of the piece
+    int id;          // the ID of the piece
     bool has_moved = false; // boolean whether the piece has moved
-    std::string notation;
+    std::string castle;     // we need to keep track of whether a rook is the one for long or short castling
+    std::string notation;   // variable denoting the chess notation of the piece
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece
 
@@ -63,7 +62,7 @@ class Piece {               // The class
     /**
      *  Method to retrieve the position
      */
-    int* getPosition() { return this->position; }
+    std::array<int,2> getPosition() { return std::array<int,2> {this->y, this->x}; }
 
     /** 
      *  Method to retrieve the sprite

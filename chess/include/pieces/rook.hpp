@@ -15,11 +15,12 @@ class Rook: public Piece
     using Piece::id;
     using Piece::player;
     using Piece::notation;
+    using Piece::castle;
 
     /**
      *  Constructor
      */
-    Rook (int player, int id);
+    Rook (int player, int id, int file);
 
     /**
      *  Method that retrieves all moves for this piece

@@ -38,12 +38,12 @@ Board::Board( ){
 void Board::buildPieces( ){
 
     // loop over entire board
-    int k=0; // id tracker
-    for (int i=0;i<8;i++)
-      for (int j=0;j<8;j++)
+    int idCounter=0; // id tracker
+    for (int rank=0;rank<8;rank++)
+      for (int file=0;file<8;file++)
         {
             // get piece code from board engine
-            int n = this->board[i][j];
+            int n = this->board[rank][file];
             if (!n) continue; // if 0 there is no piece
 
             // determine which color piece should be used
@@ -56,45 +56,45 @@ void Board::buildPieces( ){
             switch(pieceId) {
                 case 0:
                     {
-                        piece = new Rook(player, k);
+                        piece = new Rook(player, idCounter, file);
                         break;
                     }
                 case 1: 
                     {
-                        piece = new Knight(player, k);
+                        piece = new Knight(player, idCounter);
                         break;
                     }
                 case 2:
                     { 
-                        piece = new Bishop(player, k);
+                        piece = new Bishop(player, idCounter);
                         break;
                     }
                 case 3: 
                     {
-                        piece = new Queen(player, k);
+                        piece = new Queen(player, idCounter);
                         break;
                     }
                 case 4: 
                     {   
-                        piece = new King(player, k);
+                        piece = new King(player, idCounter);
                         break;
                     }
                 case 5: 
                     {
-                        piece = new Pawn(player, k);
+                        piece = new Pawn(player, idCounter);
                         break;
                     }
             }
 
             // place piece correctly
-            piece->setSpritePosition(this->piece_size*j, this->piece_size*i);
-            piece->setPosition(i, j);
+            piece->setSpritePosition(this->piece_size*file, this->piece_size*rank);
+            piece->setPosition(rank, file);
 
             // add to vector
             this->pieces.push_back(piece);
 
             // add to k
-            k++;
+            idCounter++;
         }
 }
 
