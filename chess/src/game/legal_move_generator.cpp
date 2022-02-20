@@ -242,76 +242,56 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
     // initialize boolean
     bool valid;
 
-    /**
-     *  Check king side castling
-     */
-    valid = this->validateCastlingMove(king, rookKingSide, turn, "king");
-    
-    // If valid, we should add the king moves for short castling here
-    if (valid) {
+    // create vector of rooks to check for both castling sides
+    std::vector<Piece*> rooks = {rookKingSide, rookQueenSide};
 
-        // create moves here
-        std::vector<Move> shortMoves;
+    // loop for both rooks
+    for (int i=0; i<2; i++) {
 
-        // create the moves
-        Move kingMove = { 
-            .piece = king,
-            .start = {king->y, king->x},
-            .square = {king->y, king->x + 2},
-        };
-        Move rookMove = {
-            .piece = rookKingSide,
-            .start = {rookKingSide->y, rookKingSide->x},
-            .square = {rookKingSide->y, rookKingSide->x - 2}
-        };
-
-        // add them
-        shortMoves.push_back(kingMove);
-        shortMoves.push_back(rookMove);
+        // get the right rook
+        Piece* rook = rooks[i];
         
-        // create a moves class with empty moves for the king holding the castling moves there
-        Moves shortCastling = Moves(king->notation, king->id, shortMoves);     
-        shortCastling.castling = true; // denote this is a castling move
+        // determine if it's valid to castle
+        valid = this->validateCastlingMove(king, rookKingSide, turn, "king");
+        
+        // If valid, we should add the king moves for short castling here
+        if (valid) {
 
-        // add to moves
-        moves.push_back(shortCastling);
+            // create moves here
+            std::vector<Move> castleMoves;
+
+            // get the direction for the king move
+            int direction = rook->side == "king" ? 1 : -1;
+
+            // decide amount of rooksteps, 2 on king side, 3 on queen side
+            int rookSteps = rook->side == "king" ? 2: 3;
+            
+            // create the moves
+            Move kingMove = { 
+                .piece = king,
+                .start = {king->y, king->x},
+                .square = {king->y, king->x + (2*direction)},
+            };
+            Move rookMove = {
+                .piece = rook,
+                .start = {rook->y, rook->x},
+                .square = {rook->y, rook->x - (rookSteps*direction)}
+            };
+
+            // add them
+            castleMoves.push_back(kingMove);
+            castleMoves.push_back(rookMove);
+            
+            // create a moves class with empty moves for the king holding the castling moves there
+            Moves castling = Moves(king->notation, king->id, castleMoves);     
+            castling.castling = true; // denote this is a castling move
+
+            // add to moves
+            moves.push_back(castling);
+        }
     }
 
-    /**
-     *  Check queen side castling
-     */
-    valid = this->validateCastlingMove(king, rookKingSide, turn, "queen");
-
-    // If valid, we should add the king moves for long castling here
-    if (valid) {
-
-        // create moves here
-        std::vector<Move> longMoves;
-
-        // create the moves
-        Move kingMove = { 
-            .piece = king,
-            .start = {king->y, king->x},
-            .square = {king->y, king->x - 2},
-        };
-        Move rookMove = {
-            .piece = rookQueenSide,
-            .start = {rookQueenSide->y, rookQueenSide->x},
-            .square = {rookQueenSide->y, rookQueenSide->x - 2}
-        };
-
-        // add them
-        longMoves.push_back(kingMove);
-        longMoves.push_back(rookMove);
-        
-        // create a moves class with empty moves for the king holding the castling moves there
-        Moves longCastling = Moves(king->notation, king->id, longMoves);     
-        longCastling.castling = true; // denote this is a castling move
-
-        // add to moves
-        moves.push_back(longCastling);
-    }
-
+    // return the moves vector
     return moves;
 }
 
