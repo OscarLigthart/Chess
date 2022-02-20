@@ -289,7 +289,17 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
  */
 bool LegalMoveGenerator::checkShortCastle(Piece* king, Piece* rook){
 
-    // todo implement
+    // first, check if rook has moved
+    if (rook->has_moved) return false;
+
+    // get the current rank position of the king
+    int rank = king->y;
+
+    // for short castling we check the 6th and 7th rank (we have to do -1 due to indexing)
+    // both have to be empty to castle
+    if (this->board->board[rank][5] != 0 || this->board->board[rank][6] != 0) return false;
+
+    // last, king should never be in check on all of the three spots it will traverse
 };
 
 /**
@@ -300,7 +310,18 @@ bool LegalMoveGenerator::checkShortCastle(Piece* king, Piece* rook){
  */
 bool LegalMoveGenerator::checkLongCastle(Piece* king, Piece* rook){
 
-    // todo implement
+    // first, check if rook has moved
+    if (rook->has_moved) return false;
+    
+    // get the current rank position of the king
+    int rank = king->y;
+    
+    // for long castling we check the 2nd, 3rd and 4th rank (we have to do -1 due to indexing)
+    // both have to be empty to castle
+    if (this->board->board[rank][1] != 0 || this->board->board[rank][2] != 0 ||
+        this->board->board[rank][3] != 0) return false;
+
+    // last, king should never be in check on all of the three spots it will traverse
 };
 
 /**
