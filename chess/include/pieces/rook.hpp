@@ -15,7 +15,7 @@ class Rook: public Piece
     using Piece::id;
     using Piece::player;
     using Piece::notation;
-    using Piece::castle;
+    using Piece::side;
 
     /**
      *  Constructor

@@ -27,7 +27,7 @@ Rook::Rook(int player, int id, int file) {
     this->notation = "R";
 
     // determine based on the file if this is the long or short castle
-    this->castle = file == 0 ? "long" : "short";
+    this->side = file == 0 ? "queen" : "king";
 }
 
 /**

@@ -16,7 +16,7 @@ class Piece {               // The class
     int player;
     int id;          // the ID of the piece
     bool has_moved = false; // boolean whether the piece has moved
-    std::string castle;     // we need to keep track of whether a rook is the one for long or short castling
+    std::string side;       // for the rooks we need to keep track of whether they are king or queen side (castling)
     std::string notation;   // variable denoting the chess notation of the piece
     sf::Texture figures;    // the texture for all the pieces
     sf::Sprite sprite;      // the sprite for the piece

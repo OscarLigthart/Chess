@@ -206,13 +206,13 @@ bool LegalMoveGenerator::lookForChecks(int turn) {
  */
 std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
 
-    // initialize Moves object 
+    // initialize moves vector
     std::vector<Moves> moves;
 
     // extract the pieces
     Piece* king;
-    Piece* rookLong;
-    Piece* rookShort;
+    Piece* rookQueenSide;
+    Piece* rookKingSide;
 
     // get the king of the player who's turn it is
     for (int i=0; i<this->board->pieces.size(); i++) {
@@ -231,47 +231,77 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
             
             // save the rook according to the information stored in the class 
             // about whether it's the short or long castle
-            if (this->board->pieces[i]->castle == "long") rookLong = this->board->pieces[i];
-            else rookShort = this->board->pieces[i];
+            if (this->board->pieces[i]->side == "queen") rookQueenSide = this->board->pieces[i];
+            else rookKingSide = this->board->pieces[i];
         }
     }
-        
-    // create a moves class with empty moves for the king holding the castling moves there
-    Moves kingMoves = Moves(king->notation, king->id, std::vector<Move> {});     
 
     // if the king has moved we return an empty move list
     if (king->has_moved) return moves;
 
+    // initialize boolean
+    bool valid;
+
     /**
      *  Check short castling
      */
+    valid = this->checkShortCastle(king, rookQueenSide);
     
-    // short rook should not have moved
+    // If valid, we should add the king moves for short castling here
+    if (valid) {
 
-    // no pieces in between
+        // create moves here
+        std::vector<Move> shortMoves;
 
-    // none of the position where the king is should lead to a check
+        // todo, define both the king and rook moves here
+        
+        // create a moves class with empty moves for the king holding the castling moves there
+        Moves shortCastling = Moves(king->notation, king->id, shortMoves);     
+        shortCastling.castling = true; // denote this is a castling move
+    }
 
     /**
      *  Check long castling
      */
+    valid = this->checkLongCastle(king, rookKingSide);
 
-    // long rook should not have moved
+    // If valid, we should add the king moves for long castling here
+    if (valid) {
 
-    // no pieces in between
+        // create moves here
+        std::vector<Move> longMoves;
 
-    // none of the position where the king is going to be should lead to a check
+        // todo, define both the king and rook moves here
+        
+        // create a moves class with empty moves for the king holding the castling moves there
+        Moves longCastling = Moves(king->notation, king->id, longMoves);     
+        longCastling.castling = true; // denote this is a castling move
+    }
 
-    /**
-     *  Create the move
-     */
-    // we should create two moves, and label them as castling moves, so they can both be performed
-    // by the engine
-
-    // it should be started by moving the king two pieces to the left/right
-
-
+    return moves;
 }
+
+/**
+ *  Method that checks whether the short castling move is available
+ *  Takes as input the king and the king side rook of a particular player
+ *  @param king (Piece) the king that will move
+ *  @param rook (Piece) the rook on the king side
+ */
+bool LegalMoveGenerator::checkShortCastle(Piece* king, Piece* rook){
+
+    // todo implement
+};
+
+/**
+ *  Method that checks whether the long castling move is available
+ *  Takes as input the king and the queen side rook of a particular player
+ *  @param king (Piece) the king that will move
+ *  @param rook (Piece) the rook on the queen side
+ */
+bool LegalMoveGenerator::checkLongCastle(Piece* king, Piece* rook){
+
+    // todo implement
+};
 
 /**
  *  Method to print all the available moves of the current board configurations

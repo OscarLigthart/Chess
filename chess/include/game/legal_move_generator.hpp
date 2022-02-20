@@ -57,6 +57,22 @@ class LegalMoveGenerator
     std::vector<Moves> checkCastling(int turn);
 
     /**
+     *  Method that checks whether the short castling move is available
+     *  Takes as input the king and the king side rook of a particular player
+     *  @param king (Piece) the king that will move
+     *  @param rook (Piece) the rook on the king side
+     */
+    bool checkShortCastle(Piece* king, Piece* rook);
+
+    /**
+     *  Method that checks whether the long castling move is available
+     *  Takes as input the king and the queen side rook of a particular player
+     *  @param king (Piece) the king that will move
+     *  @param rook (Piece) the rook on the queen side
+     */
+    bool checkLongCastle(Piece* king, Piece* rook);
+
+    /**
      *  Method to print all the available moves of the current board configurations
      *  Mainly used for debugging
      *  @param turn (int) 0 for black's turn and 1 for white's turn
