@@ -2,6 +2,8 @@
 
 This repo consists of a self implemented version of the game of Chess.
 
+<img src="/docs/img/thumbnail.png" alt="Example image of the chess board." width="600" height="600"/>
+
 ## Setup from source
 
 ### Prerequisites
@@ -24,7 +26,7 @@ make
 You can also run this application in Docker. If you want to do so follow these steps:
 
 ### Creating the image
-Create the docker image by running the following command:
+Create the docker image by running the following command from the root of this repo:
 ```
 docker build -t chess:latest ./docker
 ```
