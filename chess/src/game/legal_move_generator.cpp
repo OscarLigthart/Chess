@@ -256,7 +256,7 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         // get the right rook
         Piece* rook = rooks[i];
 
-        std::cout << "ACTION 2, TURN " << turn << "\n";
+        std::cout << "ACTION " << i+2 << ", TURN " << turn << "\n";
         
         // determine if it's valid to castle
         valid = this->validateCastlingMove(king, rookKingSide, turn, "king");
@@ -352,6 +352,9 @@ bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn
         // undo move
         this->board->undo(move);
     }
+
+    // if we make it here, it's valid!
+    return true;
 };
 
 /**
