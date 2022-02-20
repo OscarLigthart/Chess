@@ -46,11 +46,11 @@ USER magnus
 WORKDIR /home/magnus
 
 # clone the repo in the home directory (as this is all we will need)
-RUN git clone https://github.com/OscarLigthart/Chess.git chess
+RUN git clone https://github.com/OscarLigthart/Chess.git Chess
 
 # create a build folder and enter it
-RUN mkdir /home/magnus/chess/build
-WORKDIR /home/magnus/chess/build
+RUN mkdir /home/magnus/Chess/chess/build
+WORKDIR /home/magnus/Chess/chess/build
 
 # compile the application
 RUN cmake .. && \
