@@ -20,7 +20,7 @@ class Rook: public Piece
     /**
      *  Constructor
      */
-    Rook (int player, int id, int file);
+    Rook (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece

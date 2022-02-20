@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */
-Queen::Queen(int player, int id){
+Queen::Queen(int player, int id, int rank, int file){
 
     // determine which player is handled to get the color
     std::string color = player == 0 ? "black" : "white";
@@ -24,6 +24,10 @@ Queen::Queen(int player, int id){
     this->player = player;
     this->id = id;
     this->notation = "Q";
+
+    // set position
+    this->y = rank;
+    this->x = file;
 }
 
 /**

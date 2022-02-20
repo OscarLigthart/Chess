@@ -19,7 +19,7 @@ class Knight: public Piece
     /**
      *  Constructor
      */
-    Knight (int player, int id);
+    Knight (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece

@@ -56,39 +56,38 @@ void Board::buildPieces( ){
             switch(pieceId) {
                 case 0:
                     {
-                        piece = new Rook(player, idCounter, file);
+                        piece = new Rook(player, idCounter, rank, file);
                         break;
                     }
                 case 1: 
                     {
-                        piece = new Knight(player, idCounter);
+                        piece = new Knight(player, idCounter, rank, file);
                         break;
                     }
                 case 2:
                     { 
-                        piece = new Bishop(player, idCounter);
+                        piece = new Bishop(player, idCounter, rank, file);
                         break;
                     }
                 case 3: 
                     {
-                        piece = new Queen(player, idCounter);
+                        piece = new Queen(player, idCounter, rank, file);
                         break;
                     }
                 case 4: 
                     {   
-                        piece = new King(player, idCounter);
+                        piece = new King(player, idCounter, rank, file);
                         break;
                     }
                 case 5: 
                     {
-                        piece = new Pawn(player, idCounter);
+                        piece = new Pawn(player, idCounter, rank, file);
                         break;
                     }
             }
 
             // place piece correctly
             piece->setSpritePosition(this->piece_size*file, this->piece_size*rank);
-            piece->setPosition(rank, file);
 
             // add to vector
             this->pieces.push_back(piece);
@@ -118,8 +117,9 @@ void Board::removePiece(Piece* p){
 /**
  *  Method to perform a single move on the board
  *  @param move (Move) the move struct object holding all info to make the move
+ *  @param pseudo (bool) determine whether this is an actual or a pseudo move
  */
-void Board::move(Move move) {
+void Board::move(Move move, bool pseudo) {
 
     // get the square on the board the piece was originally at
     int square = this->board[move.start[0]][move.start[1]];
@@ -129,10 +129,6 @@ void Board::move(Move move) {
       for (int j=0; j<8; j++) {
           this->oldBoard[i][j] = this->board[i][j];
       }
-
-    if (move.capturedPiece != NULL) {
-        std::cout << this->pieces.size() << "\n";
-    }
     
     // update the board with the piece position
     this->board[move.square[0]][move.square[1]] = square;
@@ -141,7 +137,7 @@ void Board::move(Move move) {
     this->board[move.start[0]][move.start[1]] = 0;
 
     // make the move for the piece
-    move.piece->move(move.square[0], move.square[1]);
+    move.piece->move(move.square[0], move.square[1], pseudo);
 
     // check for capture here
     // if we capture, remove the piece from the pieces list
@@ -170,7 +166,7 @@ void Board::undo(Move move) {
     }
 
     // make the move for the piece to the old
-    move.piece->move(move.start[0], move.start[1]);
+    move.piece->move(move.start[0], move.start[1], true);
 
     return;
 }

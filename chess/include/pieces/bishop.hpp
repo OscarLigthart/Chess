@@ -21,7 +21,7 @@ class Bishop: public Piece
     /**
      *  Constructor
      */
-    Bishop (int player, int id);
+    Bishop (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece

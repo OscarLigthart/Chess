@@ -61,8 +61,8 @@ void Game::process(Piece* selectedPiece, int y, int x) {
                         // extract the move
                         Move move = this->moves[i].moves[j];
 
-                        // perform the move
-                        this->board->move(move);
+                        // perform the move, boolean denotes this is not pseudo and an actual move
+                        this->board->move(move, false);
                     }
 
                     // set the other turn
@@ -93,8 +93,8 @@ void Game::process(Piece* selectedPiece, int y, int x) {
                     // for the move to be valid the clicked square should be the goal of the move
                     if (move.square[0] == y && move.square[1] == x){
                         
-                        // perform the move
-                        this->board->move(move);
+                        // perform the move, boolean denotes this is not pseudo and an actual move
+                        this->board->move(move, false);
 
                         // set the other turn
                         this->turn = !this->turn;
@@ -114,7 +114,7 @@ void Game::process(Piece* selectedPiece, int y, int x) {
     }
 
     // if we made it this far we have to move the piece back, as it was no legal move
-    selectedPiece->move(selectedPiece->y, selectedPiece->x);
+    selectedPiece->move(selectedPiece->y, selectedPiece->x, true);
 }
 
 /**

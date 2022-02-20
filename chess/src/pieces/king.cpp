@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */
-King::King(int player, int id) {
+King::King(int player, int id, int rank, int file) {
 
     // determine which player is handled to get the color
     std::string color = player == 0 ? "black" : "white";
@@ -21,10 +21,14 @@ King::King(int player, int id) {
     this->sprite.setTexture(this->figures);
     this->sprite.setScale(0.66f, 0.66f);
 
-
+    // store variables
     this->player = player;
     this->id = id;
     this->notation = "K";
+
+    // set position
+    this->y = rank;
+    this->x = file;
 }
 
 /**

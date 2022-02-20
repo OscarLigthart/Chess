@@ -33,7 +33,7 @@ class Board
         {  0, 0, 0, 0, 0, 0, 0, 0 },
         {  0, 0, 0, 0, 0, 0, 0, 0 },
         {  6, 6, 6, 6, 6, 6, 6, 6 },
-        {  1, 2, 3, 4, 5, 3, 2, 1 }
+        {  1, 2, 3, 4, 5, 0, 0, 1 }
     };  
     int oldBoard[8][8]; // memory for the last configuration
 
@@ -50,8 +50,9 @@ class Board
     /**
      *  Method to perform a single move on the board
      *  @param move (Move) the move struct object holding all info to make the move
+     *  @param pseudo (bool) determine whether this is an actual or a pseudo move
      */
-    void move(Move move);
+    void move(Move move, bool pseudo);
 
     /**
      *  Method to undo a given move on the board

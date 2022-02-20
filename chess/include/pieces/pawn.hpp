@@ -21,7 +21,7 @@ class Pawn: public Piece
     /**
      *  Constructor
      */
-    Pawn (int player, int id);
+    Pawn (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece

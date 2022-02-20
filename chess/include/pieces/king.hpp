@@ -19,7 +19,7 @@ class King: public Piece
     /**
      *  Constructor
      */ 
-    King (int player, int id);
+    King (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece

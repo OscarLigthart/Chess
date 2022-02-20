@@ -12,7 +12,7 @@
 /**
  *  Constructor
  */
-Bishop::Bishop(int player, int id) {
+Bishop::Bishop(int player, int id, int rank, int file) {
 
     // determine which player is handled to get the color
     std::string color = player == 0 ? "black" : "white";
@@ -24,13 +24,14 @@ Bishop::Bishop(int player, int id) {
     this->sprite.setTexture(this->figures);
     this->sprite.setScale(0.66f, 0.66f);
 
-
     // set the player var
     this->player = player;
     this->id = id;
-
     this->notation = "B";
-    
+
+    // set position
+    this->y = rank;
+    this->x = file;
 }
 
 /**

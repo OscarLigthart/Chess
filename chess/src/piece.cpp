@@ -13,11 +13,17 @@
  */
 Piece::Piece() {}
 
-void Piece::move(int y, int x) {
+void Piece::move(int y, int x, bool pseudo) {
 
     // change the position of the piece
     this->setSpritePosition(this->piece_size * x, this->piece_size * y);
-    this->setPosition(y, x);
+
+    // only set the position if this is not a pseudo move
+    if (!pseudo) {this->has_moved = true;}
+
+    // change actual position
+    this->y = y;
+    this->x = x;
 }
 
 std::vector<std::array<int, 2>> Piece::getMoves(int board[8][8]) {
@@ -96,19 +102,6 @@ bool Piece::checkOutOfBounds(int y, int x) {
     else {
         return false;
     }
-}
-
-/**
- *  Method to set the piece to a new position
- */
-void Piece::setPosition(int y, int x) {
-
-    // denote that this piece has moved
-    this->has_moved = true;
-
-    // move the piece
-    this->y = y;
-    this->x = x;
 }
 
 void Piece::setSpritePosition(int x, int y) { this->sprite.setPosition(x, y); }

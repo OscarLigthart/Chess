@@ -30,8 +30,11 @@ class Piece {               // The class
      *  Method to move the piece from one place to the other
      *  Inherently changes the position of the piece and returns a boolean
      *  denoting whether the move is valid
+     *  @param y (int) the rank to which the piece should move
+     *  @param x (int) the file to which the piece should move
+     *  @param pseudo (bool) denoting whether this is an actual or pseudomove
      */
-    void move(int y, int x);
+    void move(int y, int x, bool pseudo);
 
     /**
      *  Method to check if move is valid
@@ -53,11 +56,6 @@ class Piece {               // The class
      *  Method to check if desired location is out of bounds
      */
     bool checkOutOfBounds(int y, int x);
-
-    /**
-     *  Method to change the position on the board
-     */
-    virtual void setPosition(int y, int x);
 
     /**
      *  Method to retrieve the position

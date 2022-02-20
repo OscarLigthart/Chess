@@ -9,7 +9,7 @@
 /**
  *  Constructor
  */ 
-Pawn::Pawn(int player, int id) {
+Pawn::Pawn(int player, int id, int rank, int file) {
 
     // determine which player is handled to get the color
     std::string color = player == 0 ? "black" : "white";
@@ -21,15 +21,17 @@ Pawn::Pawn(int player, int id) {
     this->sprite.setTexture(this->figures);
     this->sprite.setScale(0.66f, 0.66f);
 
-
     // set player
     this->player = player;  
     this->id = id;
-
-    // set playervalue
-    this->playerValue = player == 1 ? -1 : 1;  
-    
     this->notation = "";
+
+    // set playervalue, for the pawns movement direction we need this value
+    this->playerValue = player == 1 ? -1 : 1;  
+
+    // set position
+    this->y = rank;
+    this->x = file;
 }
 
 /**

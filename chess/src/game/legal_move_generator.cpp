@@ -48,8 +48,8 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
             // extract a single move
             Move move = pieceMoves.moves[j];
 
-            // make the move
-            this->board->move(move);
+            // make the pseudo move (boolean denotes this is pseudo)
+            this->board->move(move, true);
 
             // here we need to check all the moves again and see if the king is in check
             // FOR THIS WE NEED TO GENERATE ALL THE MOVES OF THE !!OTHER!! PLAYER
@@ -239,6 +239,8 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         }
     }
 
+    std::cout << "ACTION 1, TURN " << turn << "\n";
+
     // if the king has moved we return an empty move list
     if (king->has_moved) return moves;
 
@@ -253,6 +255,8 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
 
         // get the right rook
         Piece* rook = rooks[i];
+
+        std::cout << "ACTION 2, TURN " << turn << "\n";
         
         // determine if it's valid to castle
         valid = this->validateCastlingMove(king, rookKingSide, turn, "king");
@@ -338,8 +342,8 @@ bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn
             .square = {king->y, king->x + i},
         };  
 
-        // make the move
-        this->board->move(move);
+        // make the move (boolean denotes this is pseudo)
+        this->board->move(move, true);
 
         // look for checks
         check = this->lookForChecks(turn);

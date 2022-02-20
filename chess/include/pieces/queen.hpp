@@ -20,7 +20,7 @@ class Queen: public Piece
     /**
      *  Constructor
      */
-    Queen (int player, int id);
+    Queen (int player, int id, int rank, int file);
 
     /**
      *  Method that retrieves all moves for this piece
