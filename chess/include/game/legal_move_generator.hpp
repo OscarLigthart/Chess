@@ -62,15 +62,7 @@ class LegalMoveGenerator
      *  @param king (Piece) the king that will move
      *  @param rook (Piece) the rook on the king side
      */
-    bool checkShortCastle(Piece* king, Piece* rook);
-
-    /**
-     *  Method that checks whether the long castling move is available
-     *  Takes as input the king and the queen side rook of a particular player
-     *  @param king (Piece) the king that will move
-     *  @param rook (Piece) the rook on the queen side
-     */
-    bool checkLongCastle(Piece* king, Piece* rook);
+    bool validateCastlingMove(Piece* king, Piece* rook, int turn, std::string side)
 
     /**
      *  Method to print all the available moves of the current board configurations
