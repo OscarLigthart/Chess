@@ -226,11 +226,11 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
         }
 
         // extract king
-        if (this->board->pieces[i]->notation != "K") {
+        if (this->board->pieces[i]->notation == "K") {
             king = this->board->pieces[i];
 
         // we need both rooks
-        } else if (this->board->pieces[i]->notation != "R") {
+        } else if (this->board->pieces[i]->notation == "R") {
             
             // save the rook according to the information stored in the class 
             // about whether it's the short or long castle
@@ -238,8 +238,6 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
             else rookKingSide = this->board->pieces[i];
         }
     }
-
-    std::cout << "ACTION 1, TURN " << turn << "\n";
 
     // if the king has moved we return an empty move list
     if (king->has_moved) return moves;
@@ -255,11 +253,9 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
 
         // get the right rook
         Piece* rook = rooks[i];
-
-        std::cout << "ACTION " << i+2 << ", TURN " << turn << "\n";
         
         // determine if it's valid to castle
-        valid = this->validateCastlingMove(king, rookKingSide, turn, "king");
+        valid = this->validateCastlingMove(king, rook, turn);
         
         // If valid, we should add the king moves for short castling here
         if (valid) {
@@ -308,7 +304,7 @@ std::vector<Moves> LegalMoveGenerator::checkCastling(int turn) {
  *  @param king (Piece) the king that will move
  *  @param rook (Piece) the rook on the king side
  */
-bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn, std::string side){
+bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn){
 
     // first, check if rook has moved
     if (rook->has_moved) return false;
@@ -325,21 +321,25 @@ bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn
     check = this->lookForChecks(turn);
     if (check) return false;
 
+    // get the direction for the king move
+    int direction = rook->side == "king" ? 1 : -1;
+
     // loop for two moves
     for (int i=1;i<3;i++) {
 
         // goal square
         std::array<int,2> goal;
-        if (side == "king") goal = {king->y, king->x + i};
+        if (rook->side == "king") goal = {king->y, king->x + i};
         else goal = {king->y, king->x - i};
 
+        // check if the square is not occupied
         if (this->board->board[goal[0]][goal[1]] != 0) return false;
 
         // initialize a move struct here
         Move move = { 
             .piece = king,
             .start = {king->y, king->x},
-            .square = {king->y, king->x + i},
+            .square = {king->y, king->x + (i*direction)},
         };  
 
         // make the move (boolean denotes this is pseudo)
@@ -347,10 +347,13 @@ bool LegalMoveGenerator::validateCastlingMove(Piece* king, Piece* rook, int turn
 
         // look for checks
         check = this->lookForChecks(turn);
-        if (check) return false;
 
         // undo move
         this->board->undo(move);
+
+        // check if we had a check
+        if (check) return false;
+
     }
 
     // if we make it here, it's valid!

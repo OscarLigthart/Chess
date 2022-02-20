@@ -62,7 +62,7 @@ class LegalMoveGenerator
      *  @param king (Piece) the king that will move
      *  @param rook (Piece) the rook on the king side
      */
-    bool validateCastlingMove(Piece* king, Piece* rook, int turn, std::string side);
+    bool validateCastlingMove(Piece* king, Piece* rook, int turn);
 
     /**
      *  Method to print all the available moves of the current board configurations
