@@ -70,7 +70,10 @@ std::vector<Moves> LegalMoveGenerator::generate(int turn){
     }
 
     // check for castling
-    // std::vector<Moves> castleMoves = this->checkCastling(turn);
+    std::vector<Moves> castleMoves = this->checkCastling(turn);
+
+    // add all individual castling moves
+    for (int i=0; i<castleMoves.size(); i++) validMoves.push_back(castleMoves[i]);
 
     return validMoves;
 }

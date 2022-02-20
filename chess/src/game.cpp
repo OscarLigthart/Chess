@@ -39,21 +39,31 @@ void Game::process(Piece* selectedPiece, int y, int x) {
     // the requested move should be in the valid moves
     for (int i=0; i<this->moves.size(); i++) {
         
-        // print the moves
-        // todo need to have a better ID for every piece
+        // check if moves set is equal to that of the selected piece
         if (this->moves[i].pieceId == selectedPiece->id) {
-            
-            // check if any of the moves is valid
-            for (int j=0; j<this->moves[i].moves.size(); j++) {
 
-                // extract the move
-                Move move = this->moves[i].moves[j];
+            /**
+             *  LOGIC FOR PERFORMING A CASTLING MOVE
+             */
+            if (this->moves[i].castling) {
+                
+                // check if first move is king move
+                Move kingMove;
+                if (this->moves[i].moves[0].piece->notation == "K") kingMove = this->moves[i].moves[0];
+                else kingMove = this->moves[i].moves[1];
 
-                // for the move to be valid the clicked square should be the goal of the move
-                if (move.square[0] == y && move.square[1] == x){
-                    
-                    // perform the move
-                    this->board->move(move);
+                // for the move to be valid the clicked square should be the goal of the kingmove
+                if (kingMove.square[0] == y && kingMove.square[1] == x){
+
+                    // now we need to perform both moves at the same time
+                    for (int j=0; j<this->moves[i].moves.size(); j++) {
+                        
+                        // extract the move
+                        Move move = this->moves[i].moves[j];
+
+                        // perform the move
+                        this->board->move(move);
+                    }
 
                     // set the other turn
                     this->turn = !this->turn;
@@ -67,12 +77,38 @@ void Game::process(Piece* selectedPiece, int y, int x) {
                     // stop here
                     return;
                 }
+            }
+            
+            /**
+             *  LOGIC FOR PERFORMING A CONVENTIONAL MOVE
+             */
+            else {
 
-                // here we should check for castling
-                // king should have a move labelled castling
+                // check if any of the moves is valid
+                for (int j=0; j<this->moves[i].moves.size(); j++) {
 
-                // generate a new moves object under the king, this one should have the move of the rook as well
+                    // extract the move
+                    Move move = this->moves[i].moves[j];
 
+                    // for the move to be valid the clicked square should be the goal of the move
+                    if (move.square[0] == y && move.square[1] == x){
+                        
+                        // perform the move
+                        this->board->move(move);
+
+                        // set the other turn
+                        this->turn = !this->turn;
+
+                        // generate the newly valid moves
+                        this->moves = this->lgm->generate(this->turn);
+
+                        // check if the game might be over
+                        this->checkGameOver();
+
+                        // stop here
+                        return;
+                    }
+                }
             }
         }
     }
