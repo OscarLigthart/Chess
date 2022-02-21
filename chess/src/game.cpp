@@ -123,9 +123,15 @@ void Game::process(Piece* selectedPiece, int y, int x) {
 void Game::checkGameOver() {
 
     // check for checkmate
-    if (this->moves.size() == 0) std::cout << "Checkmate!" << "\n";
+    if (this->moves.size() == 0) {
 
+        // determine if the king is in check
+        bool check this->lgm->lookForChecks(this->turn);
 
-    // check for stalemate
+        // if the king is in check it's a checkmate
+        if (check) std::cout << "Checkmate!" << "\n";
 
+        // if the king is not in check it's a stalemate
+        else std::cout << "Stalemate!" << "\n";
+    }
 }
