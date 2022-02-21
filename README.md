@@ -8,8 +8,9 @@ This repo consists of a self implemented version of the game of Chess.
 
 ### Prerequisites
 This library requires SFML. To install it, run the following command:
+
 ```
-sudo apt-get install libsfml-dev
+sudo apt-get install build-essential cmake libsfml-dev
 ```
 
 ### Installation
