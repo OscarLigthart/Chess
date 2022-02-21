@@ -126,7 +126,7 @@ void Game::checkGameOver() {
     if (this->moves.size() == 0) {
 
         // determine if the king is in check
-        bool check this->lgm->lookForChecks(this->turn);
+        bool check = this->lgm->lookForChecks(this->turn);
 
         // if the king is in check it's a checkmate
         if (check) std::cout << "Checkmate!" << "\n";
