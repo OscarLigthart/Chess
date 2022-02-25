@@ -7,6 +7,8 @@
 #include <interface.hpp>
 #include <vector>
 #include <cmath>
+#include <chrono>
+#include <thread>
 
 
 int main() {
@@ -84,5 +86,8 @@ int main() {
 
         // End the current frame and display its contents on screen
         window.display();
+
+        // now sleep for a bit
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 }
