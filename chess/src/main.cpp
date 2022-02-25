@@ -30,14 +30,25 @@ int main() {
     // initialize the game class
     Game game = Game(board);
 
-    // The main loop - ends as soon as the window is closed
+    // create vector buffer for piece position
+    std::vector<std::array<int,2>> positionBuffer;
+
+    /**
+     *  The main loop
+     *  As long as the window is open this code will keep running
+     */
     while (window.isOpen())
     {
 
         // get mouse position
         sf::Vector2i pos = sf::Mouse::getPosition(window);
 
-        // Event processing
+        /**  
+         *  Here we process user input in the form of mouse clicks 
+         *  The clicks are processed into board squares and depending on
+         *  whether a piece is present at the square, the information is 
+         *  sent to the game for further process
+         */
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -70,13 +81,33 @@ int main() {
                         interface.reset();
                     }
                 }
-
-            // place it on top of the mouse if we're in moving state
-            if (interface.moving) {
-                interface.selectedPiece->setSpritePosition(pos.x - board.piece_size/2, pos.y - board.piece_size/2);
-            }
         }
 
+        /** 
+         *  Place it on top of the mouse if we're in moving state
+         *  We implement a small buffer here to create a sense of "drag" when picking up the piece
+         *  this gives the player a feel as if the piece carries some weight, making it more realistic
+         */
+        if (interface.moving) {
+
+            // add position to buffer
+            std::array<int,2> posElement = {pos.x - board.piece_size/2, pos.y - board.piece_size/2};
+            positionBuffer.push_back(posElement);
+            
+            // only start moving if the buffer has filled up a bit
+            if (positionBuffer.size() > 3) {
+
+                // move the position to the buffer element
+                interface.selectedPiece->setSpritePosition(positionBuffer.front()[0], positionBuffer.front()[1]);
+
+                // remove the element at the beginning of the buffer
+                positionBuffer.erase(positionBuffer.begin());
+            }
+        } else positionBuffer = {}; // clear the position buffer if we are not moving
+
+        /**
+         *  Draw the board after running all processes
+         */
         // Clear the whole window before rendering a new frame
         window.clear();
         
