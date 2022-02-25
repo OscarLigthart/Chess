@@ -87,7 +87,7 @@ int main() {
         // End the current frame and display its contents on screen
         window.display();
 
-        // now sleep for a bit
+        // now sleep for a bit to get a specific framerate (around 60fps)
         std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
 }
