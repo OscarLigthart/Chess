@@ -11,7 +11,13 @@
 #include <thread>
 
 
+/**
+ *  Main function
+ *  Here we open the SFML window and initialize all classes
+ *  we need to correctly run the game
+ */
 int main() {
+    
     // Declare and create a new render-window
     sf::RenderWindow window(sf::VideoMode(800, 800), "Chess");
 
