@@ -14,6 +14,7 @@ class Game
   {
     public:
     Board* board;
+    sf::RenderWindow* window;
     LegalMoveGenerator* lgm;
     int turn = 1; // 1 for white and 0 for black
     std::vector<Moves> moves; // keep track of the valid moves in the current game state
@@ -22,7 +23,7 @@ class Game
     /**
      *  Constructor
      */    
-    Game(Board &board);
+    Game(Board &board, sf::RenderWindow &window);
 
     /**
      *  Function to process clicked squares on the board

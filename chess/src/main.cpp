@@ -34,7 +34,7 @@ int main() {
     Interface interface;
 
     // initialize the game class
-    Game game = Game(board);
+    Game game = Game(board, window);
 
     // create vector buffer for piece position
     std::vector<std::array<int,2>> positionBuffer;

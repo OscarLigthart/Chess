@@ -14,10 +14,13 @@
 #include <board.hpp>
 #include <iostream>
 
-Game::Game(Board &board) {
+Game::Game(Board &board, sf::RenderWindow &window) {
     
     // inherit the board
     this->board = &board;
+
+    // inherit the window
+    this->window = &window;
 
     // initialize the legal move generator
     this->lgm = new LegalMoveGenerator(board);
@@ -129,7 +132,11 @@ void Game::checkGameOver() {
         bool check = this->lgm->lookForChecks(this->turn);
 
         // if the king is in check it's a checkmate
-        if (check) std::cout << "Checkmate!" << "\n";
+        if (check) {
+            
+            std::cout << "Checkmate!" << "\n";
+
+        }
 
         // if the king is not in check it's a stalemate
         else std::cout << "Stalemate!" << "\n";
