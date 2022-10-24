@@ -34,6 +34,12 @@ docker build -t chess:latest ./docker
 
 Then, run the image by using the following command
 
+**with NVIDIA**
 ```
 docker run --privileged --gpus all --net=host --runtime=nvidia -e DISPLAY=$DISPLAY chess
+```
+
+**without NVIDIA**
+```
+docker run --privileged --net=host --runtime=runc -e DISPLAY=$DISPLAY chess
 ```
